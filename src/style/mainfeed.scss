@@ -1,4 +1,4 @@
-$green-lime: #08df08; 
+$base-text: #cddbcd; 
 $light-blue: #0865df; 
 $gray: #939c9c; 
 
@@ -9,20 +9,20 @@ $warning: #ff7300;
 $danger: #ec0606;
 
 a {
-    color: $green-lime;
+    color: $base-text;
 }
 
-.paid {
-    background-color: $paid;
+.paid-color {
+    color: $paid;
 }
-.safe {
-    background-color: $safe;
+.safe-color {
+    color: $safe;
 }
-.warning {
-    background-color: $warning;
+.warning-color {
+    color: $warning;
 }
-.danger {
-    background-color: $danger;
+.danger-color {
+    color: $danger;
 }
 
 .main-feed {
@@ -32,31 +32,35 @@ a {
     .paid::before {
         content: '';
         background-color: $paid;
-        height: 6px;
+        border-radius: 6px 6px 0px 0px;
+        height: 10px;
         position: relative;
     }
     .safe::before {
         content: '';
         background-color: $safe;
-        height: 6px;
+        border-radius: 6px 6px 0px 0px;
+        height: 10px;
         position: relative;
     }
     .warning::before {
         content: '';
         background-color: $warning;
-        height: 6px;
+        border-radius: 6px 6px 0px 0px;
+        height: 10px;
         position: relative;
     }
     .danger::before {
         content: '';
         background-color: $danger;
-        height: 6px;
+        border-radius: 6px 6px 0px 0px;
+        height: 10px;
         position: relative;
     }
     .feed-item {
         display: flex;
         flex-direction: column;
-        color: $green-lime;
+        color: $base-text;
         background: #000;
         border-radius: 6px;
         margin-bottom: 10px;
@@ -108,15 +112,15 @@ a {
                     border: none;
                     height: 60px;
                     background: transparent;
-                    border: 1px solid $light-blue;
+                    border: 1px solid $base-text;
                     border-radius: 6px;
-                    color: $green-lime;
+                    color: $base-text;
                     flex-basis: 50%;
                     width: 30%;
                     text-align: center;
 
                     &:focus {
-                        border: 1px solid $green-lime;
+                        border: 1px solid $light-blue;
                         outline: none;
                     }
                 }
@@ -147,7 +151,7 @@ a {
 
             .pay-bill {
                 border-radius: 6px;
-                background: $green-lime;
+                background: $base-text;
                 border: none;
                 height: 40px;
                 width: 50%;

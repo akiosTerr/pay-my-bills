@@ -15,6 +15,7 @@ interface proptype {
 
 function FeedItem({ itemProps }: proptype) {
     const itemClass = 'feed-item '+ itemProps.billStatus
+    const dueDateClass = 'expiration '+ itemProps.billStatus + '-color'
 
     return (
         <div className={itemClass}>
@@ -25,7 +26,7 @@ function FeedItem({ itemProps }: proptype) {
                 </div>
                 <div className="expiration-section">
                     <p className="expiration-label">Due</p>
-                    <p className="expiration">{itemProps.expirationDate}</p>
+                    <p className={dueDateClass}>{itemProps.expirationDate}</p>
                 </div>
             </div>
             <div className="item-body">
