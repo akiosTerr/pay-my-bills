@@ -1,0 +1,160 @@
+$green-lime: #08df08; 
+$light-blue: #0865df; 
+$gray: #939c9c; 
+
+
+$paid: #2fad10;
+$safe: #093eec;
+$warning: #ff7300;
+$danger: #ec0606;
+
+a {
+    color: $green-lime;
+}
+
+.paid {
+    background-color: $paid;
+}
+.safe {
+    background-color: $safe;
+}
+.warning {
+    background-color: $warning;
+}
+.danger {
+    background-color: $danger;
+}
+
+.main-feed {
+    margin: auto;
+    width: 40%;
+    padding-top: 30px;
+    .paid::before {
+        content: '';
+        background-color: $paid;
+        height: 6px;
+        position: relative;
+    }
+    .safe::before {
+        content: '';
+        background-color: $safe;
+        height: 6px;
+        position: relative;
+    }
+    .warning::before {
+        content: '';
+        background-color: $warning;
+        height: 6px;
+        position: relative;
+    }
+    .danger::before {
+        content: '';
+        background-color: $danger;
+        height: 6px;
+        position: relative;
+    }
+    .feed-item {
+        display: flex;
+        flex-direction: column;
+        color: $green-lime;
+        background: #000;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        .title-section {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            .feed-item-title {
+                text-align: center;
+                margin-right: 8px;
+            }
+        }
+        .item-header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .expiration-section {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                .expiration-label {
+                    margin-right: 8px;
+                }
+                .expiration {
+                    font-weight: bold;
+                }
+            }
+        }
+        .item-body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            .current-price-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-right: 20px;
+                flex-basis: 30%;
+                height: 60px;
+                .current-price-label {
+                    margin: 0;
+                    flex-basis: 50%;
+                    margin-bottom: 10px;
+                }
+                .current-price-input {
+                    border: none;
+                    height: 60px;
+                    background: transparent;
+                    border: 1px solid $light-blue;
+                    border-radius: 6px;
+                    color: $green-lime;
+                    flex-basis: 50%;
+                    width: 30%;
+                    text-align: center;
+
+                    &:focus {
+                        border: 1px solid $green-lime;
+                        outline: none;
+                    }
+                }
+            }
+            .previous-price-section {
+                display: flex;
+                flex-direction: column;
+                flex-basis: 30%;
+                height: 60px;
+                .previous-price-label {
+                    margin: 0;
+                    flex-basis: 50%;
+                    margin-bottom: 10px;
+
+                }
+                .previous-price {
+                    margin: 0;
+                    flex-basis: 50%;
+                }
+                
+            }
+        }
+        .item-lower {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            .pay-bill {
+                border-radius: 6px;
+                background: $green-lime;
+                border: none;
+                height: 40px;
+                width: 50%;
+                margin-right: 10px;
+                margin-bottom: 25px;
+                cursor: pointer;
+            }
+        }
+    }
+}
