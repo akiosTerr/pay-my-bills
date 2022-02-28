@@ -6,6 +6,7 @@ import '../style/mainfeed.scss'
 import FeedItem from './feedItem';
 import { feedItemType } from './interfaces/interfaces';
 import _ from 'lodash'
+import History from './history';
 
 
 
@@ -56,6 +57,7 @@ function Mainfeed() {
 
 
     return (
+        <>
         <div className="main-feed">
             {
                 recurringBills.map((item, i) => {
@@ -65,6 +67,8 @@ function Mainfeed() {
                 })
             }
         </div>
+        <History></History>
+        </>
     );
 }
 

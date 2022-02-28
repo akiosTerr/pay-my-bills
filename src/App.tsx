@@ -1,15 +1,25 @@
 import React from 'react';
 import Mainfeed from './components/mainfeed';
 import NavBar from './components/navBar';
-import History from './components/history';
+import {
+  Routes,
+  Route,
+  BrowserRouter as Router,
+  Link,
+  Outlet,
+} from "react-router-dom";
+
 import './style/base.scss'
 
 function App() {
   return (
     <div className="App">
       <NavBar></NavBar>
-      <Mainfeed></Mainfeed>
-      <History></History>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Mainfeed />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
