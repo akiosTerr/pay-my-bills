@@ -1,8 +1,5 @@
-export interface HistoryItemType {
-    title: string
-    value: string
-    date: string
-}
+import { HistoryItemType } from "./interfaces/interfaces";
+
 
 interface PropType {
     historyItemProp : HistoryItemType
@@ -10,19 +7,21 @@ interface PropType {
 
 function HistoryItem({historyItemProp}:PropType) {
 
+    const valueformat = `R$ ${historyItemProp.value}`
+
     return ( 
         <div className="history-item">
             <h2 className="title">{historyItemProp.title}</h2>
             <div className="value-section">
-                <h2 className="value">{historyItemProp.value}</h2>
+                <h2 className="value">{valueformat}</h2>
             </div>
             <div className="paid-section">
                 <p className="paid-label">Paid in:</p>
-                <p className="date">{historyItemProp.date}</p>
+                <p className="date">{historyItemProp.paymentDate}</p>
             </div>
             <div className="exp-section">
                 <p className="exp-label">Expired in:</p>
-                <p className="date">{historyItemProp.date}</p>
+                <p className="date">{historyItemProp.paymentDate}</p>
             </div>
             
         </div>

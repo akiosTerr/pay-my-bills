@@ -1,6 +1,7 @@
 $base-text: #cddbcd; 
 $light-blue: #0865df; 
 $gray: #939c9c; 
+$active: #00b837;
 
 
 $paid: #2fad10;
@@ -32,6 +33,7 @@ a {
     align-items: center;
     width: 100%;
     padding-top: 30px;
+    overflow: auto;
     .paid::before {
         content: '';
         background-color: $paid;
@@ -151,16 +153,23 @@ a {
             flex-direction: row;
             align-items: center;
             justify-content: center;
-
+            margin-top: 10px;
             .pay-bill {
                 border-radius: 6px;
-                background: $base-text;
+                background: $active;
+                font-weight: bold;
+                color: #fff;
                 border: none;
                 height: 40px;
                 width: 50%;
                 margin-right: 10px;
                 margin-bottom: 25px;
                 cursor: pointer;
+            }
+            .pay-bill:disabled {
+                background: $gray;
+                cursor: default;
+                opacity: 0.5;
             }
         }
     }

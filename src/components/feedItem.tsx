@@ -1,12 +1,6 @@
 import { FiExternalLink } from "react-icons/fi";
+import { feedItemType } from "./interfaces/interfaces";
 
-export interface feedItemType {
-    title: string
-    prevPrice: string
-    goToUrl: string
-    expirationDate: string
-    billStatus: string
-}
 
 interface proptype {
     itemProps: feedItemType

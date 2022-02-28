@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../style/mainfeed.scss'
 import FeedItem from './feedItem';
-import {feedItemType} from './feedItem';
+import { feedItemType } from './interfaces/interfaces';
 
 
 
@@ -37,19 +37,17 @@ function Mainfeed() {
         },
     ]
 
-    return ( 
+    return (
         <div className="main-feed">
             {
-                list.map(item => {
+                list.map((item, i) => {
                     return (
-                        <>
-                            <FeedItem itemProps={item}></FeedItem>
-                        </>
+                        <FeedItem key={i} itemProps={item}></FeedItem>
                     )
                 })
             }
         </div>
-     );
+    );
 }
 
 export default Mainfeed;
