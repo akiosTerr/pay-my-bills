@@ -19,7 +19,7 @@ function History() {
             <div className="history-array">
                 {historyItems.map((item, i) => 
                     (
-                        <HistoryItem key={i} historyItemProp={item}></HistoryItem>
+                        <HistoryItem key={item._id} historyItemProp={item}></HistoryItem>
                     ))
                 }
             </div>

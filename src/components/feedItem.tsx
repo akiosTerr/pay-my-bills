@@ -20,7 +20,7 @@ function FeedItem({ itemProps }: proptype) {
                 </div>
                 <div className="expiration-section">
                     <p className="expiration-label">Due</p>
-                    <p className={dueDateClass}>{itemProps.expirationDate}</p>
+                    <p className={dueDateClass}>{itemProps.dueDate}</p>
                 </div>
             </div>
             <div className="item-body">
@@ -30,7 +30,7 @@ function FeedItem({ itemProps }: proptype) {
                 </div>
                 <div className="previous-price-section">
                     <p className="previous-price-label">Previous Price:</p>
-                    <p className="previous-price">{itemProps.prevPrice}</p>
+                    <p className="previous-price">{itemProps.previousPrice}</p>
                 </div>
             </div>
             <div className="item-lower">

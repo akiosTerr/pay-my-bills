@@ -1,15 +1,15 @@
 export interface HistoryItemType {
-    id?: string
+    _id?: string
     title: string
     value: string
     paymentDate: string
 }
 
 export interface feedItemType {
-    id?: string
+    _id?: string
     title: string
-    prevPrice: string
-    goToUrl: string
-    expirationDate: string
-    billStatus: string
+    previousPrice: string
+    gotoUrl: string
+    dueDate: string
+    billStatus?: string
 }
