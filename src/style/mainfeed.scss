@@ -69,20 +69,35 @@ a {
         background: #000;
         border-radius: 6px;
         margin-right: 5px;
-        .title-section {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            .feed-item-title {
-                text-align: center;
-                margin-right: 8px;
-            }
-        }
         .item-header {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            .title-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .feed-item-title {
+                    text-align: center;
+                    margin-bottom: 10px;
+                }
+                .options-buttons {
+                    display: flex;
+                    flex-direction: row;
+                    width: 50%;
+                    justify-content: space-evenly;
+                    .delete-item-btn {
+                        color: $danger;
+                    }
+                    .edit-item-btn {
+                        color: $safe;
+                    }
+                    .goto-url-btn {
+                        color: $paid;
+                    }
+                }
+            }
             .expiration-section {
                 display: flex;
                 flex-direction: row;

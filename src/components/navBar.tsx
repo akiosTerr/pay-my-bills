@@ -1,4 +1,5 @@
 import { FaChartLine, FaPlus, FaHome } from "react-icons/fa"
+import { Link } from "react-router-dom";
 import "../style/navbar.scss"
 
 
@@ -9,12 +10,12 @@ function NavBar() {
                 <li className="nav-bar-item">
                     <FaChartLine></FaChartLine>
                 </li>
-                <li className="nav-bar-item">
+                <Link className="nav-bar-item" to='/'>
                     <FaHome></FaHome>
-                </li>
-                <li className="nav-bar-item">
+                </Link>
+                <Link className="nav-bar-item" to='add'>
                     <FaPlus></FaPlus>
-                </li>
+                </Link>
             </ul>
         </div>
      );

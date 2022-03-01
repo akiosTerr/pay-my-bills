@@ -45,15 +45,32 @@ function Mainfeed() {
     const [recurringBills, setRecurringBills] = useState<feedItemType[]>([]);
     
     const setFormatedRecurringBills = (items: RecurringBillsResponse[]) => {
+        const getNextMonthDate = (expDay: string): string => {
+            const currentDate = new Date
+            const currentDay = currentDate.getDay()
+            const dueDay = Number(expDay)
+            if(dueDay > currentDay) {
+                const nextMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, dueDay);
+                return nextMonthDate.toLocaleDateString('pt-br')
+            } else {
+                const currentMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), dueDay);
+                return currentMonthDate.toLocaleDateString('pt-br')
+            }
+        }
         const formatedBills = items.map( item => {
             const formated_bill: feedItemType = _.clone(item);
             formated_bill.billStatus = 'paid';
+            formated_bill.dueDate = getNextMonthDate(item.dueDate)
             return formated_bill
         })
         setRecurringBills(formatedBills)
     }
 
-    useEffect(getRecurringBills(setFormatedRecurringBills), [])
+    const executeApiCall = () => {
+        getRecurringBills(setFormatedRecurringBills)()
+    }
+
+    useEffect(executeApiCall, [])
 
 
     return (
@@ -62,7 +79,7 @@ function Mainfeed() {
             {
                 recurringBills.map((item, i) => {
                     return (
-                        <FeedItem key={i} itemProps={item}></FeedItem>
+                        <FeedItem updateFn={executeApiCall} key={i} itemProps={item}></FeedItem>
                     )
                 })
             }

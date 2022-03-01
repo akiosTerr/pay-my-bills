@@ -6,7 +6,7 @@ export interface HistoryItemType {
 }
 
 export interface feedItemType {
-    _id?: string
+    _id: string
     title: string
     previousPrice: string
     gotoUrl: string
