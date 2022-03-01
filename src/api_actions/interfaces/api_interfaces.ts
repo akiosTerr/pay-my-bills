@@ -12,3 +12,10 @@ export interface RecurringBillAddRequest {
     gotoUrl: string
     dueDate: string
 }
+
+export interface HistoryAddRequest {
+    title: string
+    value: string
+    paymentDate: string
+    expirationDate: string
+}

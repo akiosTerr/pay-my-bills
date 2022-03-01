@@ -21,7 +21,7 @@ function HistoryItem({historyItemProp}:PropType) {
             </div>
             <div className="exp-section">
                 <p className="exp-label">Expired in:</p>
-                <p className="date">{historyItemProp.paymentDate}</p>
+                <p className="date">{historyItemProp.expirationDate}</p>
             </div>
             
         </div>

@@ -11,36 +11,6 @@ import History from './history';
 
 
 function Mainfeed() {
-    // const list: feedItemType[] = [
-    //     {
-    //         title: 'EDP',
-    //         prevPrice: 'R$ 100,00',
-    //         goToUrl: 'https://google.com',
-    //         expirationDate: '01/03/2022',
-    //         billStatus: 'paid',
-    //     },
-    //     {
-    //         title: 'SAEG',
-    //         prevPrice: 'R$ 47,00',
-    //         goToUrl: 'https://google.com',
-    //         expirationDate: '02/03/2022',
-    //         billStatus: 'safe',
-    //     },
-    //     {
-    //         title: 'VIVO',
-    //         prevPrice: 'R$ 120,00',
-    //         goToUrl: 'https://google.com',
-    //         expirationDate: '02/03/2022',
-    //         billStatus: 'warning',
-    //     },
-    //     {
-    //         title: 'TIM',
-    //         prevPrice: 'R$ 50,00',
-    //         goToUrl: 'https://google.com',
-    //         expirationDate: '02/03/2022',
-    //         billStatus: 'danger',
-    //     },
-    // ]
 
     const [recurringBills, setRecurringBills] = useState<feedItemType[]>([]);
     
@@ -49,7 +19,9 @@ function Mainfeed() {
             const currentDate = new Date
             const currentDay = currentDate.getDay()
             const dueDay = Number(expDay)
-            if(dueDay > currentDay) {
+            // requires validation if the payment was made in the present month
+            // todo: remake the logic in the back-end
+            if(dueDay < currentDay) {
                 const nextMonthDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, dueDay);
                 return nextMonthDate.toLocaleDateString('pt-br')
             } else {
@@ -59,6 +31,7 @@ function Mainfeed() {
         }
         const formatedBills = items.map( item => {
             const formated_bill: feedItemType = _.clone(item);
+            //todo: Bill status calculation on Back-end
             formated_bill.billStatus = 'paid';
             formated_bill.dueDate = getNextMonthDate(item.dueDate)
             return formated_bill

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { HistoryItemType } from "../components/interfaces/interfaces";
 import api_config from '../config/api_config'
+import { HistoryAddRequest } from "./interfaces/api_interfaces";
 
 const api_path = api_config.apiUrl
 
@@ -16,6 +17,16 @@ export const getHistoryItems = (setHistoryItems: Function) => () => {
     .then((response) => {
       const items: HistoryItemType[] = response.data
       setHistoryItems(items)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+export const addHistoryItem = (historyItem: HistoryAddRequest) => () => {
+    axiosClient.post('/history',historyItem)
+    .then((response) => {
+      console.log(response)
     })
     .catch((error) => {
       console.error(error);
