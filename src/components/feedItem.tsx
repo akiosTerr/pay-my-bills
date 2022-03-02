@@ -32,12 +32,13 @@ function FeedItem({ itemProps, updateFn }: proptype) {
 
     const payBill = () => {
         if(billValue.length > 1) {
-            const currentDate = new Date
+            const currentDate = new Date()
             const historyObj = {
                 title: itemProps.title,
                 value: billValue,
                 paymentDate: currentDate.toLocaleDateString('pt-br'),
                 expirationDate: itemProps.dueDate,
+                recurringBillId: itemProps._id,
             }
             addHistoryItem(historyObj)()
             setBillValue('')
@@ -50,7 +51,7 @@ function FeedItem({ itemProps, updateFn }: proptype) {
                 <div className="title-section">
                     <h1 className="feed-item-title">{itemProps.title}</h1>
                     <div className="options-buttons">
-                        <a href={itemProps.gotoUrl} title="go to website bill" className="goto-url-btn" target="_blank">
+                        <a href={itemProps.gotoUrl} title="go to website bill" className="goto-url-btn" rel="noreferrer" target="_blank">
                             <FiExternalLink />
                         </a>
                         <a href="#" onClick={deleteItem(itemProps._id)} title="delete bill" className="delete-item-btn">

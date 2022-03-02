@@ -18,4 +18,5 @@ export interface HistoryAddRequest {
     value: string
     paymentDate: string
     expirationDate: string
+    recurringBillId: string
 }
