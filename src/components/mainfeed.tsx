@@ -15,15 +15,7 @@ function Mainfeed() {
     const [recurringBills, setRecurringBills] = useState<feedItemType[]>([]);
     
     const setFormatedRecurringBills = (items: RecurringBillsResponse[]) => {
-        
-        const formatedBills = items.map( item => {
-            const formated_bill: feedItemType = _.clone(item);
-            //todo: Bill status calculation on Back-end
-            formated_bill.billStatus = 'paid';
-            formated_bill.dueDate = item.dueDate
-            return formated_bill
-        })
-        setRecurringBills(formatedBills)
+        setRecurringBills(items)
     }
 
     const executeApiCall = () => {
