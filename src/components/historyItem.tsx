@@ -1,11 +1,11 @@
 import { HistoryItemType } from "./interfaces/interfaces";
 
 
-interface PropType {
+interface historyItemProp {
     historyItemProp : HistoryItemType
 }
 
-function HistoryItem({historyItemProp}:PropType) {
+function HistoryItem({historyItemProp}:historyItemProp) {
 
     const valueformat = `R$ ${historyItemProp.value}`
 

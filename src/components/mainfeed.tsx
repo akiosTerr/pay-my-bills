@@ -4,39 +4,46 @@ import { RecurringBillsResponse } from '../api_actions/interfaces/api_interfaces
 import { getRecurringBills } from '../api_actions/recurringBills';
 import '../style/mainfeed.scss'
 import FeedItem from './feedItem';
-import { feedItemType } from './interfaces/interfaces';
+import { feedItemType, HistoryItemType } from './interfaces/interfaces';
 import _ from 'lodash'
 import History from './history';
+import { getHistoryItems } from '../api_actions/history';
 
 
 
 function Mainfeed() {
 
     const [recurringBills, setRecurringBills] = useState<feedItemType[]>([]);
+    const [historyItems, setHistoryItems] = useState<HistoryItemType[]>([]);
     
     const setFormatedRecurringBills = (items: RecurringBillsResponse[]) => {
         setRecurringBills(items)
     }
-
-    const executeApiCall = () => {
+    
+    const getRecurringBillsApiCall = () => {
         getRecurringBills(setFormatedRecurringBills)()
     }
 
-    useEffect(executeApiCall, [])
+    const getHistoryItemsApiCall = () => {
+        getHistoryItems(setHistoryItems)()
+    }
+    
+    useEffect(getHistoryItems(setHistoryItems), [])
+    useEffect(getRecurringBillsApiCall, [])
 
 
     return (
         <>
         <div className="main-feed">
             {
-                recurringBills.map((item, i) => {
+                recurringBills.map(item => {
                     return (
-                        <FeedItem updateFn={executeApiCall} key={i} itemProps={item}></FeedItem>
+                        <FeedItem updateHistory={getHistoryItemsApiCall} updateBills={getRecurringBillsApiCall} key={item._id} itemProps={item}></FeedItem>
                     )
                 })
             }
         </div>
-        <History></History>
+        <History historyItemArrayProp={historyItems}></History>
         </>
     );
 }

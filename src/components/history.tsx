@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { getHistoryItems } from "../api_actions/history";
 // import Select from 'react-select'
 
+interface HistoryArrayPropType {
+    historyItemArrayProp : HistoryItemType[]
+}
 
-function History() {
-    const [historyItems, setHistoryItems] = useState<HistoryItemType[]>([]);
-    
-    useEffect(getHistoryItems(setHistoryItems), [])
+function History({historyItemArrayProp}: HistoryArrayPropType) {
 
     return ( 
         <div className="history">
@@ -17,7 +17,7 @@ function History() {
                 Payment History
             </h1>
             <div className="history-array">
-                {historyItems.map((item, i) => 
+                {historyItemArrayProp.map((item, i) => 
                     (
                         <HistoryItem key={item._id} historyItemProp={item}></HistoryItem>
                     ))

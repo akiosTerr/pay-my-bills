@@ -23,10 +23,10 @@ export const getRecurringBills = (setRecurringBills: Function) => () => {
     });
 }
 
-export const addRecurringBill = (newRecurringBill: RecurringBillAddRequest) => () => {
+export const addRecurringBill = (newRecurringBill: RecurringBillAddRequest, navigate: Function) => () => {
     axiosClient.post('/recurring-bills', newRecurringBill)
     .then((response) => {
-      console.log(response)
+      navigate("/")
     })
     .catch((error) => {
       console.error(error);
@@ -34,10 +34,10 @@ export const addRecurringBill = (newRecurringBill: RecurringBillAddRequest) => (
 }
 
 
-export const removeRecurringBill = (id: string) => () => {
+export const removeRecurringBill = (id: string, updateBills: Function) => () => {
     axiosClient.delete('/recurring-bills/'+id)
     .then((response) => {
-      console.log(response)
+      updateBills()
     })
     .catch((error) => {
       console.error(error);

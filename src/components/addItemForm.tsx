@@ -36,8 +36,7 @@ function AddItemForm() {
             dueDate,
         }
         console.log(formObject)
-        addRecurringBill(formObject)()
-        navigate("/")
+        addRecurringBill(formObject,navigate)()
     }
 
     return (

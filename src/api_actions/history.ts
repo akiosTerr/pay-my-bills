@@ -23,10 +23,11 @@ export const getHistoryItems = (setHistoryItems: Function) => () => {
     });
 }
 
-export const addHistoryItem = (historyItem: HistoryAddRequest) => () => {
+export const addHistoryItem = (historyItem: HistoryAddRequest, updateHistory: Function) => () => {
     axiosClient.post('/history',historyItem)
     .then((response) => {
       console.log(response)
+      updateHistory()
     })
     .catch((error) => {
       console.error(error);

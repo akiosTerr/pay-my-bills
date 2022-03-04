@@ -7,11 +7,12 @@ import { feedItemType } from "./interfaces/interfaces";
 
 interface proptype {
     itemProps: feedItemType
-    updateFn: Function
+    updateBills: Function
+    updateHistory: Function
 }
 
 
-function FeedItem({ itemProps, updateFn }: proptype) {
+function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
     const itemClass = 'feed-item '+ itemProps.billStatus
     const dueDateClass = 'expiration '+ itemProps.billStatus + '-color'
 
@@ -21,8 +22,7 @@ function FeedItem({ itemProps, updateFn }: proptype) {
     const deleteItem = (id: string) => () => {
         const confirmation = window.confirm("Are you sure you want to delete the item?")
         if(confirmation) {
-            removeRecurringBill(id)()
-            updateFn()
+            removeRecurringBill(id,updateBills)()
         }
     }
 
@@ -40,7 +40,7 @@ function FeedItem({ itemProps, updateFn }: proptype) {
                 expirationDate: itemProps.dueDate,
                 recurringBillId: itemProps._id,
             }
-            addHistoryItem(historyObj)()
+            addHistoryItem(historyObj,updateHistory)()
             setBillValue('')
         }
     }
