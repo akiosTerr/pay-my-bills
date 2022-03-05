@@ -23,7 +23,8 @@ once you click to pay the bill (after typing the value) it will reset for the ne
 the first the functional protype is ready, but there is a TON of things to improve,  
 small things like a edit bill function and big things like a line chart component
 
-here is the node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>  
+### here is the node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>  
 to use it, just put your mongo URI on the config file, you know how it is
+
 
 *like always, feel free to make suggestions!*
