@@ -12,10 +12,18 @@ well, I built this web app for myself, but you can use it if you like !
 here is the node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>
 
 
-It is actually very simple, you register a new bill with the name, the next due date and Url to access the website of the bill if you like
-the bill item will keep up with the expiration day and warn you by status colors
+It is actually very simple, you register a new bill with the name, the next expiration date and url to access the website of the bill,  
+the bill item will keep up with the expiration day and warn you by status colors:
+  - **green**: just paid
+  - **blue**: far from expiration
+  - **yellow**: close from expiration
+  - **red**: late
+
+remember, the app only lets you click to "pay the bill" on the yellow or red status,  
 once you click to pay the bill (after typing the value) it will reset for the next month and register the payment on the history component
 
 
-the first the functional protype is ready, but there is a TON of things to improve
+the first the functional protype is ready, but there is a TON of things to improve,  
 small things like a edit bill function and big things like a line chart component
+
+*like always, feel free to make suggestions!*
