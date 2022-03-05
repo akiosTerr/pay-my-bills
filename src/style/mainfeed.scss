@@ -36,173 +36,179 @@ a {
     text-align: center;
     font-family: cursive;
 }
-
-.main-feed {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.main-content {
+    display: inline-flex;
     width: 100%;
-    padding-top: 30px;
-    overflow: auto;
-    .paid::before {
-        content: '';
-        background-color: $paid;
-        border-radius: 6px 6px 0px 0px;
-        height: 10px;
-        position: relative;
-    }
-    .safe::before {
-        content: '';
-        background-color: $safe;
-        border-radius: 6px 6px 0px 0px;
-        height: 10px;
-        position: relative;
-    }
-    .warning::before {
-        content: '';
-        background-color: $warning;
-        border-radius: 6px 6px 0px 0px;
-        height: 10px;
-        position: relative;
-    }
-    .danger::before {
-        content: '';
-        background-color: $danger;
-        border-radius: 6px 6px 0px 0px;
-        height: 10px;
-        position: relative;
-    }
-    .feed-item {
+    .main-feed {
         display: flex;
-        flex-direction: column;
-        color: $base-text;
-        background: $card;
-        border-radius: 6px;
-        margin-right: 5px;
-        .item-header {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-top: 30px;
+        width: 70%;
+        height: fit-content;
+        gap: 10px;
+        margin-left: 223px;
+        .paid::before {
+            content: '';
+            background-color: $paid;
+            border-radius: 6px 6px 0px 0px;
+            height: 10px;
+            position: relative;
+        }
+        .safe::before {
+            content: '';
+            background-color: $safe;
+            border-radius: 6px 6px 0px 0px;
+            height: 10px;
+            position: relative;
+        }
+        .warning::before {
+            content: '';
+            background-color: $warning;
+            border-radius: 6px 6px 0px 0px;
+            height: 10px;
+            position: relative;
+        }
+        .danger::before {
+            content: '';
+            background-color: $danger;
+            border-radius: 6px 6px 0px 0px;
+            height: 10px;
+            position: relative;
+        }
+        .feed-item {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            .title-section {
+            color: $base-text;
+            background: $card;
+            border-radius: 6px;
+            .item-header {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
                 justify-content: center;
-                .feed-item-title {
-                    text-align: center;
-                    margin-bottom: 10px;
+                .title-section {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    .feed-item-title {
+                        text-align: center;
+                        margin-bottom: 10px;
+                    }
+                    .options-buttons {
+                        display: flex;
+                        flex-direction: row;
+                        width: 50%;
+                        justify-content: space-evenly;
+                        .btn {
+                            border: none;
+                            background: transparent;
+                            cursor: pointer;
+                            &.delete-item-btn {
+                                color: $danger;
+                            }
+                            &.edit-item-btn {
+                                color: $safe;
+                            }
+                            &.goto-url-btn {
+                                color: $paid;
+                            }
+                        }
+                        
+                    }
                 }
-                .options-buttons {
+                .expiration-section {
                     display: flex;
                     flex-direction: row;
-                    width: 50%;
-                    justify-content: space-evenly;
-                    .btn {
+                    justify-content: center;
+                    .expiration-label {
+                        margin-right: 8px;
+                    }
+                    .expiration {
+                        font-weight: bold;
+                    }
+                }
+            }
+            .item-body {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+                .current-price-section {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin-right: 20px;
+                    flex-basis: 30%;
+                    height: 60px;
+                    .current-price-label {
+                        margin: 0;
+                        flex-basis: 50%;
+                        margin-bottom: 10px;
+                    }
+                    .current-price-input {
                         border: none;
+                        height: 60px;
                         background: transparent;
-                        cursor: pointer;
-                        &.delete-item-btn {
-                            color: $danger;
+                        border: 1px solid $base-text;
+                        border-radius: 6px;
+                        color: $base-text;
+                        flex-basis: 50%;
+                        width: 70%;
+                        text-align: center;
+    
+                        &:focus {
+                            border: 1px solid $light-blue;
+                            outline: none;
                         }
-                        &.edit-item-btn {
-                            color: $safe;
-                        }
-                        &.goto-url-btn {
-                            color: $paid;
-                        }
+                    }
+                }
+                .previous-price-section {
+                    display: flex;
+                    flex-direction: column;
+                    flex-basis: 30%;
+                    height: 60px;
+                    .previous-price-label {
+                        margin: 0;
+                        flex-basis: 50%;
+                        margin-bottom: 10px;
+    
+                    }
+                    .previous-price {
+                        margin: 0;
+                        flex-basis: 50%;
+                        white-space: nowrap;
+                        font-weight: bold;
                     }
                     
                 }
             }
-            .expiration-section {
+            .item-lower {
                 display: flex;
                 flex-direction: row;
+                align-items: center;
                 justify-content: center;
-                .expiration-label {
-                    margin-right: 8px;
-                }
-                .expiration {
-                    font-weight: bold;
-                }
-            }
-        }
-        .item-body {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            .current-price-section {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                margin-right: 20px;
-                flex-basis: 30%;
-                height: 60px;
-                .current-price-label {
-                    margin: 0;
-                    flex-basis: 50%;
-                    margin-bottom: 10px;
-                }
-                .current-price-input {
-                    border: none;
-                    height: 60px;
-                    background: transparent;
-                    border: 1px solid $base-text;
+                margin-top: 10px;
+                .pay-bill {
                     border-radius: 6px;
-                    color: $base-text;
-                    flex-basis: 50%;
-                    width: 70%;
-                    text-align: center;
-
-                    &:focus {
-                        border: 1px solid $light-blue;
-                        outline: none;
-                    }
+                    background: $active;
+                    font-weight: bold;
+                    color: #fff;
+                    border: none;
+                    height: 40px;
+                    width: 50%;
+                    margin-right: 10px;
+                    margin-bottom: 25px;
+                    cursor: pointer;
                 }
-            }
-            .previous-price-section {
-                display: flex;
-                flex-direction: column;
-                flex-basis: 30%;
-                height: 60px;
-                .previous-price-label {
-                    margin: 0;
-                    flex-basis: 50%;
-                    margin-bottom: 10px;
-
+                .pay-bill:disabled {
+                    background: $gray;
+                    cursor: default;
+                    opacity: 0.5;
                 }
-                .previous-price {
-                    margin: 0;
-                    flex-basis: 50%;
-                    white-space: nowrap;
-                }
-                
-            }
-        }
-        .item-lower {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-            .pay-bill {
-                border-radius: 6px;
-                background: $active;
-                font-weight: bold;
-                color: #fff;
-                border: none;
-                height: 40px;
-                width: 50%;
-                margin-right: 10px;
-                margin-bottom: 25px;
-                cursor: pointer;
-            }
-            .pay-bill:disabled {
-                background: $gray;
-                cursor: default;
-                opacity: 0.5;
             }
         }
     }

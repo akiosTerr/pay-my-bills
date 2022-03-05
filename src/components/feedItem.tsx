@@ -15,6 +15,7 @@ interface proptype {
 function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
     const itemClass = 'feed-item '+ itemProps.billStatus
     const dueDateClass = 'expiration '+ itemProps.billStatus + '-color'
+    const prevPrice = itemProps.previousPrice == 'no payments' ? itemProps.previousPrice : 'R$ '+itemProps.previousPrice
 
     const [billValue, setBillValue] = useState<string>('');
     const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
@@ -80,7 +81,7 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
                 </div>
                 <div className="previous-price-section">
                     <p className="previous-price-label">Previous Price:</p>
-                    <p className="previous-price">{itemProps.previousPrice}</p>
+                    <p className="previous-price">{prevPrice}</p>
                 </div>
             </div>
             <div className="item-lower">

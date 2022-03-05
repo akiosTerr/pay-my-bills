@@ -17,7 +17,11 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
             <div className="history-array">
                 {historyItemArrayProp.map((item, i) => 
                     (
-                        <HistoryItem key={item._id} historyItemProp={item}></HistoryItem>
+                        <>
+                            <HistoryItem key={item._id} historyItemProp={item}></HistoryItem>
+                            <hr className='line-separator' />
+                        </>
+                        
                     ))
                 }
             </div>

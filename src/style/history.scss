@@ -1,32 +1,37 @@
 $base-text: #cddbcd; 
 $highlight: #2fad10;
-$card: #01023f;
+$card: #000;
 
 
 .history {
-    margin: auto;
-    width: 100%;
+    width: fit-content;
     color: $base-text;
-    
+    margin-right: 20px;
+    border: 1px solid $base-text;
+    height: fit-content;
+    padding: 10px 10px;
+    background-color: $card;
     .history-title {
         text-align: center;
         margin-bottom: 20px;
     }
     .history-array  {
-        width: 250px;
+        width: 100%;
         margin: auto;
         display: flex;
         flex-direction: column;
+        .line-separator {
+            width: 100%;
+        }
         .history-item {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr;
-            // grid-row-gap: 10px; 
             text-align: center;
             background: $card;
-            border: 1px solid $highlight;
-            border-radius: 6px;
-            margin-bottom: 20px;
+            width: 100%;
+            // border: 1px solid $highlight;
+            // border-radius: 6px;
             .title {
                 margin: 0px;
                 grid-column-start: 1;
