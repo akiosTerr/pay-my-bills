@@ -8,6 +8,7 @@ interface historyItemProp {
 function HistoryItem({historyItemProp}:historyItemProp) {
 
     const valueformat = `R$ ${historyItemProp.value}`
+    const paymentDate = new Date(historyItemProp.paymentDate).toLocaleDateString()
 
     return ( 
         <div className="history-item">
@@ -17,7 +18,7 @@ function HistoryItem({historyItemProp}:historyItemProp) {
             </div>
             <div className="paid-section">
                 <p className="paid-label">Paid in:</p>
-                <p className="date">{historyItemProp.paymentDate}</p>
+                <p className="date">{paymentDate}</p>
             </div>
             <div className="exp-section">
                 <p className="exp-label">Expired in:</p>

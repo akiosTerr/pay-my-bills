@@ -5,7 +5,6 @@ import { getRecurringBills } from '../api_actions/recurringBills';
 import '../style/mainfeed.scss'
 import FeedItem from './feedItem';
 import { feedItemType, HistoryItemType } from './interfaces/interfaces';
-import _ from 'lodash'
 import History from './history';
 import { getHistoryItems } from '../api_actions/history';
 
@@ -17,7 +16,19 @@ function Mainfeed() {
     const [historyItems, setHistoryItems] = useState<HistoryItemType[]>([]);
     
     const setFormatedRecurringBills = (items: RecurringBillsResponse[]) => {
-        setRecurringBills(items)
+    
+        const formated = items.map(item => {
+            const dateformat = new Date(item.dueDate)
+            return {
+                _id: item._id,
+                title: item.title,
+                previousPrice: item.previousPrice,
+                gotoUrl: item.gotoUrl,
+                dueDate: dateformat.toLocaleDateString(),
+                billStatus: item.billStatus,
+            }
+        })
+        setRecurringBills(formated)
     }
     
     const getRecurringBillsApiCall = () => {
@@ -28,7 +39,7 @@ function Mainfeed() {
         getHistoryItems(setHistoryItems)()
     }
     
-    useEffect(getHistoryItems(setHistoryItems), [])
+    useEffect(getHistoryItemsApiCall, [])
     useEffect(getRecurringBillsApiCall, [])
 
 

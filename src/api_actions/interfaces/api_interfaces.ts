@@ -1,22 +1,25 @@
+import { BillStatus } from "../../components/interfaces/interfaces"
+
 export interface RecurringBillsResponse {
     _id: string
     title: string
     previousPrice: string
     gotoUrl: string
     value: string
-    dueDate: string
+    billStatus: BillStatus
+    dueDate: Date
 }
 
 export interface RecurringBillAddRequest {
     title: string
     gotoUrl: string
-    dueDate: string
+    dueDate: Date
 }
 
 export interface HistoryAddRequest {
     title: string
     value: string
-    paymentDate: string
+    paymentDate: Date
     expirationDate: string
     recurringBillId: string
 }

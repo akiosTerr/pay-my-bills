@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiExternalLink, FiTrash2, FiEdit } from "react-icons/fi";
 import { addHistoryItem } from "../api_actions/history";
 import { removeRecurringBill } from "../api_actions/recurringBills";
-import { feedItemType } from "./interfaces/interfaces";
+import { BillStatus, feedItemType } from "./interfaces/interfaces";
 
 
 interface proptype {
@@ -17,7 +17,13 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
     const dueDateClass = 'expiration '+ itemProps.billStatus + '-color'
 
     const [billValue, setBillValue] = useState<string>('');
+    const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
 
+    useEffect(() => {
+        const readyToPay = itemProps.billStatus === BillStatus.warning || itemProps.billStatus === BillStatus.danger
+        const fieldNotEmpty = billValue.length > 1
+        setPayBtnActiveValue(!(readyToPay && fieldNotEmpty))
+    },[billValue,payBtnActiveValue,itemProps])
 
     const deleteItem = (id: string) => () => {
         const confirmation = window.confirm("Are you sure you want to delete the item?")
@@ -36,11 +42,11 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
             const historyObj = {
                 title: itemProps.title,
                 value: billValue,
-                paymentDate: currentDate.toLocaleDateString('pt-br'),
+                paymentDate: currentDate,
                 expirationDate: itemProps.dueDate,
                 recurringBillId: itemProps._id,
             }
-            addHistoryItem(historyObj,updateHistory)()
+            addHistoryItem(historyObj,updateHistory,updateBills)()
             setBillValue('')
         }
     }
@@ -51,15 +57,15 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
                 <div className="title-section">
                     <h1 className="feed-item-title">{itemProps.title}</h1>
                     <div className="options-buttons">
-                        <a href={itemProps.gotoUrl} title="go to website bill" className="goto-url-btn" rel="noreferrer" target="_blank">
+                        <a href={itemProps.gotoUrl} title="go to website bill" className="btn goto-url-btn" rel="noreferrer" target="_blank">
                             <FiExternalLink />
                         </a>
-                        <a href="#" onClick={deleteItem(itemProps._id)} title="delete bill" className="delete-item-btn">
+                        <button onClick={deleteItem(itemProps._id)} title="delete bill" className="btn delete-item-btn">
                             <FiTrash2 />
-                        </a>
-                        <a href="#" title="edit bill" className="edit-item-btn">
+                        </button>
+                        <button title="edit bill" className="btn edit-item-btn">
                             <FiEdit />
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div className="expiration-section">
@@ -79,7 +85,7 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
             </div>
             <div className="item-lower">
 
-                <button onClick={payBill} className="pay-bill">PAY BILL</button>
+                <button disabled={payBtnActiveValue} onClick={payBill} className="pay-bill">PAY BILL</button>
             </div>
         </div>
     );

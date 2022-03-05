@@ -87,15 +87,21 @@ a {
                     flex-direction: row;
                     width: 50%;
                     justify-content: space-evenly;
-                    .delete-item-btn {
-                        color: $danger;
+                    .btn {
+                        border: none;
+                        background: transparent;
+                        cursor: pointer;
+                        &.delete-item-btn {
+                            color: $danger;
+                        }
+                        &.edit-item-btn {
+                            color: $safe;
+                        }
+                        &.goto-url-btn {
+                            color: $paid;
+                        }
                     }
-                    .edit-item-btn {
-                        color: $safe;
-                    }
-                    .goto-url-btn {
-                        color: $paid;
-                    }
+                    
                 }
             }
             .expiration-section {
@@ -159,6 +165,7 @@ a {
                 .previous-price {
                     margin: 0;
                     flex-basis: 50%;
+                    white-space: nowrap;
                 }
                 
             }

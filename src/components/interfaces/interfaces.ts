@@ -12,5 +12,12 @@ export interface feedItemType {
     previousPrice: string
     gotoUrl: string
     dueDate: string
-    billStatus?: string
+    billStatus?: BillStatus
 }
+
+export enum BillStatus {
+    paid = "paid",
+    safe = "safe",
+    warning = "warning",
+    danger = "danger",
+  }
