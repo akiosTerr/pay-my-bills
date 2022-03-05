@@ -18,7 +18,7 @@ the bill item will keep up with the expiration day and warn you by status colors
   - **red**: late
 
 remember, the app only lets you click to "pay the bill" on the yellow or red status,  
-once you click to pay the bill (after typing the value) it will reset for the next month and register the payment on the Payment History section
+once you click to "pay the bill" (after typing the value) it will reset for the next month and register the payment on the Payment History section
 
 
 the first functional prototype is ready, but there is a MILLION things to improve,  
