@@ -3,7 +3,7 @@
 Do you have problems keeping up with all the bills you have to pay ? no ? just me ?  
 Well, I built this web app for myself, but you can use it if you like !
 
-![pay my bills](https://i.ibb.co/p0Yt5yY/Pay-My-Bills0-1.png)
+![pay my bills](public/pmbdemo2.png)
 
 ### Pay My Bills is a basic recurring expenses management web app  
 It is actually very simple:   
