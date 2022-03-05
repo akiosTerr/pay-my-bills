@@ -10,26 +10,28 @@ function AddItemForm() {
     const [title, setTitle] = useState<string>('');
     const [gotoUrl, setGotoUrl] = useState<string>('');
     const [dueDate, setDueDate] = useState<Date | null>(null);
-    
-    const onChangeTitle = (e:React.ChangeEvent<HTMLInputElement>) => {
+
+    const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(e.target.value)
     }
-    const onChangeDueDate = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeDueDate = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newDate = new Date(e.target.value)
         setDueDate(newDate)
     }
-    const onChangeGotoUrl = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeGotoUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
         setGotoUrl(e.target.value)
     }
 
-    
+
 
     const validateFields = () => {
-        const fields = [title,gotoUrl]
-        return fields.some(item => item.length < 2)
+        const fields = [title, gotoUrl]
+        const textFieldCheck = fields.some(item => item.length < 2)
+        const dateFieldCheck = !dueDate
+        return  textFieldCheck || dateFieldCheck 
     }
 
-    const onSubmitHandler = (e:any) => {
+    const onSubmitHandler = (e: any) => {
         e.preventDefault()
         if(!dueDate) return
         const formObject: RecurringBillAddRequest = {
@@ -38,19 +40,30 @@ function AddItemForm() {
             dueDate,
         }
         console.log(formObject)
-        addRecurringBill(formObject,navigate)()
+        addRecurringBill(formObject, navigate)()
     }
 
     return (
-    <form onSubmit={onSubmitHandler} className="add-item-form">
-        <label className="item-title">bill Name:</label>
-        <input value={title} onChange={onChangeTitle} className="title-input" type="text" name="title" id="billTitle-input" />    
-        <label className="item-title">bill Url:</label>
-        <input value={gotoUrl} onChange={onChangeGotoUrl} className="goto-input" type="text" name="gotoUrl" id="gotoUrl-input" />    
-        <label className="item-title">expiration date:</label>
-        <input onChange={onChangeDueDate} className="expire-input" type="date" name="due" id="expire-input" />    
-        <button disabled={validateFields()} className="submit-button" type="submit" value="Submit">SUBMIT</button>
-    </form>
+        <form onSubmit={onSubmitHandler} className="add-item-form">
+            <h1 className="form-title">
+                Put your bill information
+            </h1>
+            <label className="label item-title">
+                bill Name:
+            </label>
+            <input value={title} onChange={onChangeTitle} className="input-text title-input" type="text" name="title" id="billTitle-input" />
+            <label className="label item-title">
+                bill Url:
+            </label>
+            <input placeholder='https://url.com' value={gotoUrl} onChange={onChangeGotoUrl} className="input-text goto-input" type="text" name="gotoUrl" id="gotoUrl-input" />
+            <label className="label item-title">
+                next expiration date:
+            </label>
+            <input onChange={onChangeDueDate} className="input-text expire-input" type="date" name="due" id="expire-input" />
+            <button disabled={validateFields()} className="submit-button" type="submit" value="Submit">
+                ADD NEW BILL
+            </button>
+        </form>
     );
 }
 

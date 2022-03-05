@@ -1,9 +1,56 @@
+$light-blue: #0865df; 
+$active: #03942e;
+$base-text: #cddbcd; 
+$darkbg: #0e0d0d;
+$card: #01023f;
+$gray: #727777; 
+
 .add-item-form {
+    color: $base-text;
     margin: auto;
-    width: 50%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
-    color: #fff;
+    justify-content: center;
+    align-items: center;
+
+    .form-title {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .label {
+        margin-bottom: 10px;
+    }
+    .input-text {
+        height: 40px;
+        border: 1px solid transparent;
+        margin-bottom: 10px;
+        width: 60%;
+        padding: 0px 20px;
+        border-radius: 6px;
+        color: $base-text;
+        background: $card;
+        &:focus {
+            outline: none;
+            border: 1px solid #0865df;
+        }
+    }
+    .submit-button {
+        margin-top: 20px;
+        width: 50%;
+        height: 40px;
+        border-radius: 6px;
+        background: $active;
+        color: $base-text;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        &:disabled {
+            opacity: 0.5;
+            background-color: $gray;
+            cursor: default;
+        }
+    }
     .title-input {
         
     }
@@ -11,9 +58,7 @@
 
     }
     .expire-input {
-
-    }
-    .submit-button {
-
+        width: fit-content;
+        text-align: center;
     }
 }

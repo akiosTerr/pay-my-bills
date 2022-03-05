@@ -2,6 +2,7 @@ $base-text: #cddbcd;
 $light-blue: #0865df; 
 $gray: #939c9c; 
 $active: #00b837;
+$card: #01023f;
 
 
 $paid: #2fad10;
@@ -11,6 +12,10 @@ $danger: #ec0606;
 
 a {
     color: $base-text;
+}
+
+* {
+    font-family: system-ui;
 }
 
 .paid-color {
@@ -24,6 +29,12 @@ a {
 }
 .danger-color {
     color: $danger;
+}
+
+.main-title {
+    color: $base-text;
+    text-align: center;
+    font-family: cursive;
 }
 
 .main-feed {
@@ -66,7 +77,7 @@ a {
         display: flex;
         flex-direction: column;
         color: $base-text;
-        background: #000;
+        background: $card;
         border-radius: 6px;
         margin-right: 5px;
         .item-header {

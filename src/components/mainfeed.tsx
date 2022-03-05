@@ -45,6 +45,7 @@ function Mainfeed() {
 
     return (
         <>
+        <h1 className="main-title">Pay My Bills 0.1.0</h1>
         <div className="main-feed">
             {
                 recurringBills.map(item => {

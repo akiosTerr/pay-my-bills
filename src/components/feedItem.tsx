@@ -60,11 +60,11 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
                         <a href={itemProps.gotoUrl} title="go to website bill" className="btn goto-url-btn" rel="noreferrer" target="_blank">
                             <FiExternalLink />
                         </a>
-                        <button onClick={deleteItem(itemProps._id)} title="delete bill" className="btn delete-item-btn">
-                            <FiTrash2 />
-                        </button>
                         <button title="edit bill" className="btn edit-item-btn">
                             <FiEdit />
+                        </button>
+                        <button onClick={deleteItem(itemProps._id)} title="delete bill" className="btn delete-item-btn">
+                            <FiTrash2 />
                         </button>
                     </div>
                 </div>

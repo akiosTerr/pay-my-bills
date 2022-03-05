@@ -1,5 +1,6 @@
 $base-text: #cddbcd; 
 $highlight: #2fad10;
+$card: #01023f;
 
 
 .history {
@@ -22,7 +23,7 @@ $highlight: #2fad10;
             grid-template-rows: 1fr 1fr;
             // grid-row-gap: 10px; 
             text-align: center;
-            background: #000;
+            background: $card;
             border: 1px solid $highlight;
             border-radius: 6px;
             margin-bottom: 20px;

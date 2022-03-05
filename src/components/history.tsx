@@ -1,8 +1,6 @@
+import '../style/history.scss';
 import HistoryItem from "./historyItem";
-import '../style/history.scss'
 import { HistoryItemType } from "./interfaces/interfaces";
-import { useEffect, useState } from "react";
-import { getHistoryItems } from "../api_actions/history";
 // import Select from 'react-select'
 
 interface HistoryArrayPropType {
