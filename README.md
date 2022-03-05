@@ -2,7 +2,7 @@
 
 Pay My Bills is a web app that helps you to, you guessed it, pay your bills !
 
-Do you have problemas keeping up with all the bills you have to pay ? no ? just me ?
+Do you have problems keeping up with all the bills you have to pay ? no ? just me ?
 
 well, I built this web app for myself, but you can use it if you like !
 
