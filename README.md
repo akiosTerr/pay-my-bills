@@ -7,7 +7,7 @@ Do you have problems keeping up with all the bills you have to pay ? no ? just m
 well, I built this web app for myself, but you can use it if you like !
 
 
-![pay my bills](https://i.ibb.co/jMhqc1g/pay-my-bills.png)
+![pay my bills](https://i.ibb.co/p0Yt5yY/Pay-My-Bills0-1.png)
 
 It is actually very simple:   
 you register a new bill with the name, the next expiration date and url to access the website of the bill,  
