@@ -9,9 +9,6 @@ well, I built this web app for myself, but you can use it if you like !
 
 ![pay my bills](https://i.ibb.co/jMhqc1g/pay-my-bills.png)
 
-here is the node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>
-
-
 It is actually very simple, you register a new bill with the name, the next expiration date and url to access the website of the bill,  
 the bill item will keep up with the expiration day and warn you by status colors:
   - **green**: just paid
@@ -25,5 +22,8 @@ once you click to pay the bill (after typing the value) it will reset for the ne
 
 the first the functional protype is ready, but there is a TON of things to improve,  
 small things like a edit bill function and big things like a line chart component
+
+here is the node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>  
+to use it, just put your mongo URI on the config file, you know how it is
 
 *like always, feel free to make suggestions!*
