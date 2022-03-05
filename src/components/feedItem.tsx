@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiExternalLink, FiTrash2, FiEdit } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import { addHistoryItem } from "../api_actions/history";
 import { removeRecurringBill } from "../api_actions/recurringBills";
 import { BillStatus, feedItemType } from "./interfaces/interfaces";
@@ -61,9 +62,9 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
                         <a href={itemProps.gotoUrl} title="go to website bill" className="btn goto-url-btn" rel="noreferrer" target="_blank">
                             <FiExternalLink />
                         </a>
-                        <button title="edit bill" className="btn edit-item-btn">
+                        <Link to={`edit/${itemProps._id}`} title="edit bill" className="btn edit-item-btn">
                             <FiEdit />
-                        </button>
+                        </Link>
                         <button onClick={deleteItem(itemProps._id)} title="delete bill" className="btn delete-item-btn">
                             <FiTrash2 />
                         </button>

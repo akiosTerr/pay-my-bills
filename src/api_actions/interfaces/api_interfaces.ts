@@ -13,7 +13,7 @@ export interface RecurringBillsResponse {
 export interface RecurringBillAddRequest {
     title: string
     gotoUrl: string
-    dueDate: Date
+    dueDate?: Date
 }
 
 export interface HistoryAddRequest {

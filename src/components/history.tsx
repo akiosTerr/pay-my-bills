@@ -15,12 +15,12 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
                 Payment History
             </h1>
             <div className="history-array">
-                {historyItemArrayProp.map((item, i) => 
+                {historyItemArrayProp.map((item) => 
                     (
-                        <>
-                            <HistoryItem key={item._id} historyItemProp={item}></HistoryItem>
+                        <div key={item._id}>
+                            <HistoryItem historyItemProp={item}></HistoryItem>
                             <hr className='line-separator' />
-                        </>
+                        </div>
                         
                     ))
                 }

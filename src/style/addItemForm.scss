@@ -4,6 +4,7 @@ $base-text: #cddbcd;
 $darkbg: #0e0d0d;
 $card: #01023f;
 $gray: #727777; 
+$cancel: #f00b0b; 
 
 .add-item-form {
     color: $base-text;
@@ -18,8 +19,22 @@ $gray: #727777;
         text-align: center;
         margin-bottom: 10px;
     }
-    .label {
-        margin-bottom: 10px;
+    .label-case {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: start;
+        margin-bottom: 20px;
+        text-align: start;
+        width: 70%;
+        white-space: nowrap;
+        .label {
+            margin-right: 10px;
+        }
+        .old-value {
+            font-weight: bold;
+            margin: 0px;
+        }
     }
     .input-text {
         height: 40px;
@@ -50,6 +65,17 @@ $gray: #727777;
             background-color: $gray;
             cursor: default;
         }
+    }
+    .cancel-button {
+        margin-top: 20px;
+        width: 50%;
+        height: 40px;
+        border-radius: 6px;
+        background: $cancel;
+        color: $base-text;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
     }
     .title-input {
         

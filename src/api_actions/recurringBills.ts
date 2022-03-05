@@ -23,8 +23,30 @@ export const getRecurringBills = (setRecurringBills: Function) => () => {
     });
 }
 
+export const getOneRecurringBill = (id:string, setRecurringBill: Function) => () => {
+    axiosClient.get('/recurring-bills/'+id)
+    .then((response) => {
+      const item: RecurringBillsResponse = response.data
+      setRecurringBill(item)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 export const addRecurringBill = (newRecurringBill: RecurringBillAddRequest, navigate: Function) => () => {
     axiosClient.post('/recurring-bills', newRecurringBill)
+    .then((response) => {
+      navigate("/")
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+
+export const editRecurringBill = (id: string, newRecurringBill: RecurringBillAddRequest, navigate: Function) => () => {
+    axiosClient.put('/recurring-bills/'+id, newRecurringBill)
     .then((response) => {
       navigate("/")
     })
