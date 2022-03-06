@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { RecurringBillsResponse } from '../api_actions/interfaces/api_interfaces';
 import { getRecurringBills } from '../api_actions/recurringBills';
 import '../style/mainfeed.scss'
-import FeedItem from './feedItem';
-import { feedItemType, HistoryItemType } from './interfaces/interfaces';
-import History from './history';
+import FeedItem from '../components/feedItem';
+import { feedItemType, HistoryItemType } from '../components/interfaces/interfaces';
+import History from '../components/history';
 import { getHistoryItems } from '../api_actions/history';
 
 

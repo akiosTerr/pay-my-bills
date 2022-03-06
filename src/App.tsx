@@ -1,15 +1,13 @@
-import Mainfeed from './components/mainfeed';
+import Mainfeed from './pages/mainfeed';
 import NavBar from './components/navBar';
 import {
   Routes,
   Route,
   BrowserRouter as Router,
-  Link,
-  Outlet,
 } from "react-router-dom";
 import './style/base.scss'
-import AddItemForm from './components/addItemForm';
-import EditItemForm from './components/editItemForm';
+import AddItemForm from './pages/addItemForm';
+import EditItemForm from './pages/editItemForm';
 
 function App() {
 

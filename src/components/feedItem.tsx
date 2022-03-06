@@ -16,7 +16,7 @@ interface proptype {
 function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
     const itemClass = 'feed-item ' + itemProps.billStatus
     const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
-    const prevPrice = itemProps.previousPrice == 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
+    const prevPrice = itemProps.previousPrice === 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
 
 
 
