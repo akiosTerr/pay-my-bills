@@ -7,9 +7,9 @@ function NavBar() {
     return ( 
         <div className="header-nav-bar">
             <ul className="nav-bar">
-                <li className="nav-bar-item">
+                <Link className="nav-bar-item" to='chart'>
                     <FaChartLine></FaChartLine>
-                </li>
+                </Link>
                 <Link className="nav-bar-item" to='/'>
                     <FaHome></FaHome>
                 </Link>
