@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { RecurringBillAddRequest } from '../api_actions/interfaces/api_interfaces';
 import { addRecurringBill } from '../api_actions/recurringBills';
 import { useNavigate } from "react-router-dom";
-import '../style/addItemForm.scss'
+import '../style/ItemForm.scss'
 
 function AddItemForm() {
     let navigate = useNavigate();

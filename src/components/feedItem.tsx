@@ -13,10 +13,12 @@ interface proptype {
 }
 
 
-function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
-    const itemClass = 'feed-item '+ itemProps.billStatus
-    const dueDateClass = 'expiration '+ itemProps.billStatus + '-color'
-    const prevPrice = itemProps.previousPrice == 'no payments' ? itemProps.previousPrice : 'R$ '+itemProps.previousPrice
+function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
+    const itemClass = 'feed-item ' + itemProps.billStatus
+    const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
+    const prevPrice = itemProps.previousPrice == 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
+    
+
 
     const [billValue, setBillValue] = useState<string>('');
     const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
@@ -25,21 +27,34 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
         const readyToPay = itemProps.billStatus === BillStatus.warning || itemProps.billStatus === BillStatus.danger
         const fieldNotEmpty = billValue.length > 1
         setPayBtnActiveValue(!(readyToPay && fieldNotEmpty))
-    },[billValue,payBtnActiveValue,itemProps])
+    }, [billValue, payBtnActiveValue, itemProps])
 
     const deleteItem = (id: string) => () => {
         const confirmation = window.confirm("Are you sure you want to delete the item?")
-        if(confirmation) {
-            removeRecurringBill(id,updateBills)()
+        if (confirmation) {
+            removeRecurringBill(id, updateBills)()
         }
     }
 
-    const onChangeBillValue = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeBillValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         setBillValue(e.target.value)
-    } 
+    }
+
+    const showUrl = () => {
+        const show = itemProps.gotoUrl.slice(0, 4) === 'http'
+        if (show) {
+            return (
+                <a href={itemProps.gotoUrl} title="go to website bill" className="btn goto-url-btn" rel="noreferrer" target="_blank">
+                    <FiExternalLink />
+                </a>
+            )
+        } else {
+            return null
+        }
+    }
 
     const payBill = () => {
-        if(billValue.length > 1) {
+        if (billValue.length > 1) {
             const currentDate = new Date()
             const historyObj = {
                 title: itemProps.title,
@@ -48,7 +63,7 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
                 expirationDate: itemProps.dueDate,
                 recurringBillId: itemProps._id,
             }
-            addHistoryItem(historyObj,updateHistory,updateBills)()
+            addHistoryItem(historyObj, updateHistory, updateBills)()
             setBillValue('')
         }
     }
@@ -59,9 +74,7 @@ function FeedItem({ itemProps, updateBills, updateHistory}: proptype) {
                 <div className="title-section">
                     <h1 className="feed-item-title">{itemProps.title}</h1>
                     <div className="options-buttons">
-                        <a href={itemProps.gotoUrl} title="go to website bill" className="btn goto-url-btn" rel="noreferrer" target="_blank">
-                            <FiExternalLink />
-                        </a>
+                        {showUrl()}
                         <Link to={`edit/${itemProps._id}`} title="edit bill" className="btn edit-item-btn">
                             <FiEdit />
                         </Link>

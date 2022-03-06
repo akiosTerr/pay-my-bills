@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { RecurringBillAddRequest, RecurringBillsResponse } from '../api_actions/interfaces/api_interfaces';
 import { editRecurringBill, getOneRecurringBill } from '../api_actions/recurringBills';
 import { useNavigate, useParams } from "react-router-dom";
-import '../style/addItemForm.scss'
+import '../style/ItemForm.scss'
 
 
 function EditItemForm() {
