@@ -1,10 +1,10 @@
-$light-blue: #0865df; 
+$light-blue: #0865df;
 $active: #03942e;
-$base-text: #cddbcd; 
+$base-text: #cddbcd;
 $darkbg: #0e0d0d;
 $card: #01023f;
-$gray: #727777; 
-$cancel: #f00b0b; 
+$gray: #727777;
+$cancel: #f00b0b;
 
 .add-item-form {
     color: $base-text;
@@ -18,6 +18,13 @@ $cancel: #f00b0b;
     .form-title {
         text-align: center;
         margin-bottom: 10px;
+    }
+    .label {
+        .detail {
+            opacity: 0.3;
+            font-size: 0.8em;
+        }
+        margin-bottom: 14px;
     }
     .label-case {
         display: flex;
@@ -78,10 +85,8 @@ $cancel: #f00b0b;
         cursor: pointer;
     }
     .title-input {
-        
     }
     .goto-input {
-
     }
     .expire-input {
         width: fit-content;

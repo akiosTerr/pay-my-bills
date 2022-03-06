@@ -25,7 +25,7 @@ function AddItemForm() {
 
 
     const validateFields = () => {
-        const fields = [title, gotoUrl]
+        const fields = [title]
         const textFieldCheck = fields.some(item => item.length < 2)
         const dateFieldCheck = !dueDate
         return  textFieldCheck || dateFieldCheck 
@@ -53,7 +53,7 @@ function AddItemForm() {
             </label>
             <input value={title} onChange={onChangeTitle} className="input-text title-input" type="text" name="title" id="billTitle-input" />
             <label className="label item-title">
-                bill Url:
+                 bill Url: <span className='detail'>(optional)</span>
             </label>
             <input placeholder='https://url.com' value={gotoUrl} onChange={onChangeGotoUrl} className="input-text goto-input" type="text" name="gotoUrl" id="gotoUrl-input" />
             <label className="label item-title">

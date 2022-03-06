@@ -50,6 +50,7 @@ a {
         height: fit-content;
         gap: 10px;
         margin-left: 223px;
+        margin-bottom: 40px;
         .paid::before {
             content: '';
             background-color: $paid;

@@ -17,7 +17,7 @@ function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
     const itemClass = 'feed-item ' + itemProps.billStatus
     const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
     const prevPrice = itemProps.previousPrice == 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
-    
+
 
 
     const [billValue, setBillValue] = useState<string>('');
@@ -74,13 +74,13 @@ function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
                 <div className="title-section">
                     <h1 className="feed-item-title">{itemProps.title}</h1>
                     <div className="options-buttons">
-                        {showUrl()}
-                        <Link to={`edit/${itemProps._id}`} title="edit bill" className="btn edit-item-btn">
-                            <FiEdit />
-                        </Link>
                         <button onClick={deleteItem(itemProps._id)} title="delete bill" className="btn delete-item-btn">
                             <FiTrash2 />
                         </button>
+                        <Link to={`edit/${itemProps._id}`} title="edit bill" className="btn edit-item-btn">
+                            <FiEdit />
+                        </Link>
+                        {showUrl()}
                     </div>
                 </div>
                 <div className="expiration-section">

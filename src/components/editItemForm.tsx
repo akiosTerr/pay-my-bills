@@ -24,7 +24,7 @@ function EditItemForm() {
     }
 
     const validateFields = () => {
-        const fields = [title, gotoUrl]
+        const fields = [title]
         const textFieldCheck = fields.some(item => item.length < 2)
         return  textFieldCheck 
     }
