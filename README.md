@@ -33,6 +33,7 @@ I plan to add a lot more features for general financial management.
 
 ## Comming soon
 Line chart component to visualize your monthly expenses
+
 ![pay my bills](public/line-chart.png)
 
 
