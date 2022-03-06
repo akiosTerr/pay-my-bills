@@ -1,4 +1,11 @@
-# PAY MY BILLS
+# PAY MY BILLS  
+
+<p>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="50" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" width="50"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" width="50" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="50" />
+</p>
 
 Do you have problems keeping up with all the bills you have to pay ? no ? just me ?  
 Well, I built this web app for myself, but you can use it if you like !
@@ -20,7 +27,7 @@ Remember, the app only lets you click the "pay bill" button on the yellow or red
 
 
 the first functional prototype is ready, but there is a MILLION things to improve,  
-small things like a edit bill function and big things like a line chart component
+I plan to add a lot more features for general financial management.
 
 ### here is the node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>  
 to use it, just put your mongo URI on the config file, you know how it is
