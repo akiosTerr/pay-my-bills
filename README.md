@@ -1,5 +1,4 @@
-# PAY MY BILLS  
-
+<h1>PAY MY BILLS</h1>
 <p>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="50" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" width="50"/>
@@ -7,8 +6,11 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="50" />
 </p>
 
+<p>
 Do you have problems keeping up with all the bills you have to pay ? no ? just me ?  
-Well, I built this web app for myself, but you can use it if you like !
+Well, I built this web app for myself,   
+  but you can use it if you like !
+</p>
 
 ![pay my bills](public/pmbdemo2.png)
 
