@@ -1,5 +1,5 @@
 import axios from "axios";
-import { HistoryItemType } from "../components/interfaces/interfaces";
+import { HistoryItemType, LineChartData } from "../components/interfaces/interfaces";
 import api_config from '../config/api_config'
 import { HistoryAddRequest } from "./interfaces/api_interfaces";
 
@@ -29,6 +29,17 @@ export const addHistoryItem = (historyItem: HistoryAddRequest, updateHistory: Fu
       console.log(response)
       updateHistory()
       updateBills()
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+export const getChartData = (setChartData: Function) => () => {
+  axiosClient.get('/history/chart')
+    .then((response) => {
+      const items: LineChartData[] = response.data
+      setChartData(items)
     })
     .catch((error) => {
       console.error(error);

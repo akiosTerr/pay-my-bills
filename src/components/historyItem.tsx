@@ -9,6 +9,7 @@ function HistoryItem({historyItemProp}:historyItemProp) {
 
     const valueformat = `R$ ${historyItemProp.value}`
     const paymentDate = new Date(historyItemProp.paymentDate).toLocaleDateString()
+    const dueDate = new Date(historyItemProp.expirationDate).toLocaleDateString()
 
     return ( 
         <div className="history-item">
@@ -22,7 +23,7 @@ function HistoryItem({historyItemProp}:historyItemProp) {
             </div>
             <div className="exp-section">
                 <p className="exp-label">Expired in:</p>
-                <p className="date">{historyItemProp.expirationDate}</p>
+                <p className="date">{dueDate}</p>
             </div>
             
         </div>

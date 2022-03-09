@@ -6,6 +6,11 @@ export interface HistoryItemType {
     expirationDate: string
 }
 
+export interface LineChartData {
+    title: string
+    data: LineChartValues[]
+}
+
 export interface feedItemType {
     _id: string
     title: string
@@ -15,9 +20,19 @@ export interface feedItemType {
     billStatus?: BillStatus
 }
 
+export interface LineChartDataComponent {
+    labels: Array<string>
+    datasets: Array<any>
+}
+
+interface LineChartValues {
+    value: number
+    expiration: string
+}
+
 export enum BillStatus {
     paid = "paid",
     safe = "safe",
     warning = "warning",
     danger = "danger",
-  }
+}

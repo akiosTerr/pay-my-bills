@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import '../style/chartPage.scss'
 
@@ -14,7 +14,9 @@ import {
     ChartData,
     ChartOptions,
 } from 'chart.js'
-import { Chart } from 'react-chartjs-2'
+import { LineChartData, LineChartDataComponent } from "../components/interfaces/interfaces";
+import { convertDate, flatten, getMonthName, getRangeOfMonths } from "../utils/general_utils";
+import { getChartData } from "../api_actions/history";
 
 ChartJS.register(
     CategoryScale,
@@ -50,8 +52,8 @@ function ChartPage() {
                 yAlign: 'bottom',
                 displayColors: false,
                 callbacks: {
-                    label: function(t) {
-                        const label = t.dataset.label+': R$ '+String(t.raw)
+                    label: function (t) {
+                        const label = t.dataset.label + ': R$ ' + String(t.raw)
                         return label
                     }
                 }
@@ -69,7 +71,8 @@ function ChartPage() {
             },
         },
     }
-    const [datasets, setDatasets] = useState(
+
+    const [datasets, setDatasets] = useState<LineChartDataComponent>(
         {
             labels: ['January', 'February', 'March',
                 'April', 'May'],
@@ -102,7 +105,61 @@ function ChartPage() {
                     data: [33, 24, 60, 68, 75],
                 },
             ]
+        }
+    )
+
+    const parseChartData = (LineData:LineChartData[]) => {
+        const filtered = LineData.filter(item => item.title === 'EDP')
+        const dates = filtered.map((item) => {
+            const dateList = item.data.map(dataItem => {
+                const converted = convertDate(dataItem.expiration)
+                const date = new Date(converted)
+                return date
+            })
+           
+            return dateList
         })
+
+
+        const mergedDates = flatten(dates)
+        mergedDates.sort((a,b) => {
+            //@ts-ignore
+            return a - b
+        })
+
+        const parsedMonths = mergedDates.map(date => {
+            console.log(date.getMonth())
+            return getMonthName(date.getMonth())
+        })
+        
+        const parsedData = filtered.map(item => {
+            item.data.sort((a,b) => {
+                const a_converted = convertDate(a.expiration)
+                const a_date = new Date(a_converted)
+                const b_converted = convertDate(b.expiration)
+                const b_date = new Date(b_converted)
+                //@ts-ignore
+                return a_date - b_date
+            })
+            const lineValues = item.data.map(i => i.value)
+            return {
+                label: item.title,
+                fill: false,
+                lineTension: 0.5,
+                backgroundColor: 'red',
+                borderColor: 'red',
+                borderWidth: 2,
+                data: lineValues,
+            }
+        })
+
+        const finalLineData = {
+            labels: parsedMonths,
+            datasets: parsedData,
+        }
+        setDatasets(finalLineData)
+    }
+    useEffect(getChartData(parseChartData),[])
 
     return (
         <div className="chart-main">

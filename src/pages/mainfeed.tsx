@@ -18,13 +18,13 @@ function Mainfeed() {
     const setFormatedRecurringBills = (items: RecurringBillsResponse[]) => {
 
         const formated = items.map(item => {
-            const dateformat = new Date(item.dueDate)
+            
             return {
                 _id: item._id,
                 title: item.title,
                 previousPrice: item.previousPrice,
                 gotoUrl: item.gotoUrl,
-                dueDate: dateformat.toLocaleDateString(),
+                dueDate: item.dueDate,
                 billStatus: item.billStatus,
             }
         })
