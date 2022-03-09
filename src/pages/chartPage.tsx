@@ -17,6 +17,7 @@ import {
 import { LineChartData, LineChartDataComponent } from "../components/interfaces/interfaces";
 import { convertDate, flatten, getMonthName, getRangeOfMonths } from "../utils/general_utils";
 import { getChartData } from "../api_actions/history";
+import _ from "lodash";
 
 ChartJS.register(
     CategoryScale,
@@ -109,7 +110,10 @@ function ChartPage() {
     )
 
     const parseChartData = (LineData:LineChartData[]) => {
-        const filtered = LineData.filter(item => item.title === 'EDP')
+        const filterList = ['EDP', 'SAEG']
+        const colors = ['red','blue','green']
+
+        const filtered = LineData.filter(item => filterList.includes(item.title))
         const dates = filtered.map((item) => {
             const dateList = item.data.map(dataItem => {
                 const converted = convertDate(dataItem.expiration)
@@ -131,8 +135,8 @@ function ChartPage() {
             console.log(date.getMonth())
             return getMonthName(date.getMonth())
         })
-        
-        const parsedData = filtered.map(item => {
+        const uniqueMonths = _.uniq(parsedMonths)
+        const parsedData = filtered.map((item, i) => {
             item.data.sort((a,b) => {
                 const a_converted = convertDate(a.expiration)
                 const a_date = new Date(a_converted)
@@ -146,15 +150,15 @@ function ChartPage() {
                 label: item.title,
                 fill: false,
                 lineTension: 0.5,
-                backgroundColor: 'red',
-                borderColor: 'red',
+                backgroundColor: colors[i],
+                borderColor: colors[i],
                 borderWidth: 2,
                 data: lineValues,
             }
         })
 
         const finalLineData = {
-            labels: parsedMonths,
+            labels: uniqueMonths,
             datasets: parsedData,
         }
         setDatasets(finalLineData)
