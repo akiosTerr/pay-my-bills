@@ -7,9 +7,8 @@
 </p>
 
 <p>
-Do you have problems keeping up with all the bills you have to pay ? no ? just me ?  
-Well, I built this web app for myself,   
-  but you can use it if you like !
+Do you have problems keeping up with all the bills you have to pay? I do!
+I built this web app for myself, but you can use it if you like !
 </p>
 
 ![pay my bills](public/pmbdemo2.png)
