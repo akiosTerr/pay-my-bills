@@ -6,16 +6,16 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" width="50" />
 </p>
 
-<p>
-Do you have problems keeping up with all the bills you have to pay? I do!
-I built this web app for myself, but you can use it if you like !
-</p>
+<h3>
+Do you have problems keeping up with all the bills you have to pay? <br>
+I do! I built this app so I can keep up with everything.
+</h3>
 
 ![pay my bills](public/pmbdemo2.png)
 
 ### Pay My Bills is a basic recurring expenses management web app  
 It is actually very simple:   
-you register a new bill with the name, the next expiration date and url to access the website of the bill,  
+you register a new bill with the name, the next expiration date and a (optional) url to access the website of the bill,  
 the bill item will keep up with the expiration day and warn you by status colors:
   - **green**: just paid
   - **blue**: far from expiration
