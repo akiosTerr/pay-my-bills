@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { RecurringBillsResponse } from '../api_actions/interfaces/api_interfaces';
 import { getRecurringBills } from '../api_actions/recurringBills';
