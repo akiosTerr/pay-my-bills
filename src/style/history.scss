@@ -4,16 +4,17 @@ $card: #000;
 
 
 .history {
-    width: fit-content;
+    width: 30%;
     color: $base-text;
     margin-right: 20px;
-    border: 1px solid $base-text;
+    // border: 1px solid $base-text;
     height: fit-content;
     padding: 10px 10px;
-    background-color: $card;
+    background-color: transparent;
     .history-title {
         text-align: center;
         margin-bottom: 20px;
+        font-size: 1.2em;
     }
     .history-array  {
         width: 100%;
@@ -24,48 +25,42 @@ $card: #000;
             width: 100%;
         }
         .history-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
+            display: flex;
+            flex-direction: row;
             text-align: center;
-            background: $card;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
             // border: 1px solid $highlight;
             // border-radius: 6px;
-            .title {
-                margin: 0px;
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 1;
-                grid-row-end: 2;
-                text-align: center;
-            }
-            .value-section {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row-start: 2;
-                grid-row-end: 3;
-                .value {
+            .title-section {
+                margin-right: 10px;
+                width: 30%;
+                .title {
                     margin: 0px;
-                    color: $highlight;
+                    text-align: left;
+                }
+                .value-section {
+                   
+                    text-align: left;
+                    .value {
+                        margin: 0px;
+                        color: $highlight;
+                    }
                 }
             }
             .paid-section {
-                margin: 0px;
-                grid-column-start: 1;
-                grid-column-end: 2;
-                grid-row-start: 3;
-                grid-row-end: 4;
+                margin-right: 10px;
+                text-align: left;
+                width: 30%;
                 .date {
                     font-weight: bold;
                 }
             }
             .exp-section {
-                margin: 0px;
-                grid-column-start: 2;
-                grid-column-end: 3;
-                grid-row-start: 3;
-                grid-row-end: 4;
+                text-align: left;
+                margin-left: 13px;
+                width: 30%;
                 .date {
                     font-weight: bold;
                 }

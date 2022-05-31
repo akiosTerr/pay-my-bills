@@ -1,15 +1,14 @@
-import Mainfeed from './components/mainfeed';
+import Mainfeed from './pages/mainfeed';
 import NavBar from './components/navBar';
 import {
   Routes,
   Route,
   BrowserRouter as Router,
-  Link,
-  Outlet,
 } from "react-router-dom";
 import './style/base.scss'
-import AddItemForm from './components/addItemForm';
-import EditItemForm from './components/editItemForm';
+import AddItemForm from './pages/addItemForm';
+import EditItemForm from './pages/editItemForm';
+import ChartPage from './pages/chartPage';
 
 function App() {
 
@@ -21,6 +20,7 @@ function App() {
           <Route path="/" element={<Mainfeed />} />
           <Route path="/add" element={<AddItemForm />} />
           <Route path="/edit/:id" element={<EditItemForm />} />
+          <Route path="/chart" element={<ChartPage />} />
         </Routes>
       </Router>
     </div>

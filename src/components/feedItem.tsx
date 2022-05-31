@@ -16,9 +16,9 @@ interface proptype {
 function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
     const itemClass = 'feed-item ' + itemProps.billStatus
     const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
-    const prevPrice = itemProps.previousPrice == 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
-
-
+    const prevPrice = itemProps.previousPrice === 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
+    const dateformat = new Date(itemProps.dueDate).toLocaleDateString()
+    
 
     const [billValue, setBillValue] = useState<string>('');
     const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
@@ -37,6 +37,7 @@ function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
     }
 
     const onChangeBillValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target)
         setBillValue(e.target.value)
     }
 
@@ -54,11 +55,11 @@ function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
     }
 
     const payBill = () => {
-        if (billValue.length > 1) {
+        if (billValue.length > 0) {
             const currentDate = new Date()
             const historyObj = {
                 title: itemProps.title,
-                value: billValue,
+                value: Number(billValue),
                 paymentDate: currentDate,
                 expirationDate: itemProps.dueDate,
                 recurringBillId: itemProps._id,
@@ -85,13 +86,13 @@ function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
                 </div>
                 <div className="expiration-section">
                     <p className="expiration-label">Due</p>
-                    <p className={dueDateClass}>{itemProps.dueDate}</p>
+                    <p className={dueDateClass}>{dateformat}</p>
                 </div>
             </div>
             <div className="item-body">
                 <div className="current-price-section">
                     <p className="current-price-label">current price:</p>
-                    <input value={billValue} onChange={onChangeBillValue} className="current-price-input" type="text" name="current-price" id="current-price" />
+                    <input value={billValue} onChange={onChangeBillValue} className="current-price-input" pattern="[0-9]*" type="text" name="current-price" id="current-price" />
                 </div>
                 <div className="previous-price-section">
                     <p className="previous-price-label">Previous Price:</p>

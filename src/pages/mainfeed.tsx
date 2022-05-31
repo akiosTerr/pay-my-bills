@@ -1,11 +1,10 @@
-import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { RecurringBillsResponse } from '../api_actions/interfaces/api_interfaces';
 import { getRecurringBills } from '../api_actions/recurringBills';
 import '../style/mainfeed.scss'
-import FeedItem from './feedItem';
-import { feedItemType, HistoryItemType } from './interfaces/interfaces';
-import History from './history';
+import FeedItem from '../components/feedItem';
+import { feedItemType, HistoryItemType } from '../components/interfaces/interfaces';
+import History from '../components/history';
 import { getHistoryItems } from '../api_actions/history';
 
 
@@ -18,13 +17,13 @@ function Mainfeed() {
     const setFormatedRecurringBills = (items: RecurringBillsResponse[]) => {
 
         const formated = items.map(item => {
-            const dateformat = new Date(item.dueDate)
+            
             return {
                 _id: item._id,
                 title: item.title,
                 previousPrice: item.previousPrice,
                 gotoUrl: item.gotoUrl,
-                dueDate: dateformat.toLocaleDateString(),
+                dueDate: item.dueDate,
                 billStatus: item.billStatus,
             }
         })
