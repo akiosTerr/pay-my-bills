@@ -63,7 +63,7 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
         console.log(values)
         const total = values.reduce((prev,cur) => {
             return prev+cur
-        })
+        },0)
         console.log(total)
         return total.toFixed(2)
     }
