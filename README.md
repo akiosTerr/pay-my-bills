@@ -36,7 +36,7 @@ Line chart component to visualize your monthly expenses
 ![pay my bills](public/line-chart.png)
 
 
-### here is the node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>  
+### Node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>  
 to use it, just put your mongo URI on the config file, you know how it is
 
 
