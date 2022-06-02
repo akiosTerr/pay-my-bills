@@ -11,7 +11,7 @@ Do you have problems keeping up with all the bills you have to pay? <br>
 I do! I built this app so I can keep up with everything.
 </h3>
 
-![pay my bills](public/pmbdemo2.png)
+![pay my bills](public/pmbdemo3.png)
 
 ### Pay My Bills is a basic recurring expenses management web app  
 It is actually very simple:   
