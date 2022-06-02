@@ -58,6 +58,16 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
         return itemDate.getMonth() === currentFilterMonth?.monthValue
     })
 
+    const getTotal = () => {
+        const values =  filteredArrayProps.map(item => Number(item.value))
+        console.log(values)
+        const total = values.reduce((prev,cur) => {
+            return prev+cur
+        })
+        console.log(total)
+        return total.toFixed(2)
+    }
+
     return ( 
         <div className="history">
             <div className="history-header">
@@ -70,6 +80,11 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
                     ))}
                 </select>
             </div>
+            <div className="total-section">
+                <h2 className="total-label">Total:</h2>
+                <h2 className='total-value'>{getTotal()}</h2>
+            </div>
+            <hr className='header-hr' />
             <div className="history-array">
                 {filteredArrayProps.map((item) => 
                     (
