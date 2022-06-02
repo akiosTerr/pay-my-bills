@@ -1,4 +1,4 @@
-const orderedMonths = [
+export const orderedMonths = [
     'January',
     'February',
     'March',

@@ -11,10 +11,24 @@ $card: #000;
     height: fit-content;
     padding: 10px 10px;
     background-color: transparent;
-    .history-title {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 1.2em;
+    .history-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .history-title {
+            text-align: left;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+        .month-dropdown-select {
+            background-color: transparent;
+            color: white;
+            border-radius: 6px;
+            .month-option {
+                color: #000;
+                background: inherit;
+            }
+        }   
     }
     .history-array  {
         width: 100%;
