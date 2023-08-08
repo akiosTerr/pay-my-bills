@@ -1,7 +1,7 @@
 import axios from "axios";
-import { HistoryItemType, LineChartData } from "../components/interfaces/interfaces";
-import api_config from '../config/api_config'
-import { HistoryAddRequest } from "./interfaces/api_interfaces";
+import { HistoryItemType, LineChartData } from "components/interfaces/interfaces";
+import api_config from 'config/api_config'
+import { HistoryAddRequest } from "api_actions/interfaces/api_interfaces";
 
 const api_path = api_config.apiUrl
 

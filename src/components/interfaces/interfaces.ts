@@ -17,6 +17,7 @@ export interface feedItemType {
     previousPrice: string
     gotoUrl: string
     dueDate: string
+    billCategory: string
     billStatus?: BillStatus
 }
 

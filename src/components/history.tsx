@@ -1,10 +1,9 @@
 import { uniqBy } from 'lodash';
 import { useEffect, useState } from 'react';
-import '../style/history.scss';
-import { convertDate, orderedMonths } from '../utils/general_utils';
-import HistoryItem from "./historyItem";
-import { HistoryItemType } from "./interfaces/interfaces";
-// import Select from 'react-select'
+import 'style/history.scss';
+import { convertDate, orderedMonths } from 'utils/general_utils';
+import HistoryItem from "components/historyItem";
+import { HistoryItemType } from "components/interfaces/interfaces";
 
 interface HistoryArrayPropType {
     historyItemArrayProp : HistoryItemType[]
@@ -60,11 +59,9 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
 
     const getTotal = () => {
         const values =  filteredArrayProps.map(item => Number(item.value))
-        console.log(values)
         const total = values.reduce((prev,cur) => {
             return prev+cur
         },0)
-        console.log(total)
         return total.toFixed(2)
     }
 

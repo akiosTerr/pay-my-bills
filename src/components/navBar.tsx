@@ -1,6 +1,6 @@
 import { FaChartLine, FaPlus, FaHome } from "react-icons/fa"
 import { Link } from "react-router-dom";
-import "../style/navbar.scss"
+import "style/navbar.scss"
 
 
 function NavBar() {

@@ -1,4 +1,4 @@
-import { HistoryItemType } from "./interfaces/interfaces";
+import { HistoryItemType } from "components/interfaces/interfaces";
 
 interface historyItemProp {
   historyItemProp: HistoryItemType;

@@ -1,24 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FiExternalLink, FiTrash2, FiEdit } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { addHistoryItem } from "../api_actions/history";
-import { removeRecurringBill } from "../api_actions/recurringBills";
-import { BillStatus, feedItemType } from "./interfaces/interfaces";
+import { addHistoryItem } from "api_actions/history";
+import { removeRecurringBill } from "api_actions/recurringBills";
+import { BillStatus, feedItemType } from "components/interfaces/interfaces";
+import { UpdateBillsCtx, UpdateHistoryCtx } from 'Contexts'
 
 
 interface proptype {
     itemProps: feedItemType
-    updateBills: Function
-    updateHistory: Function
 }
 
 
-function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
+function FeedItem({ itemProps}: proptype) {
     const itemClass = 'feed-item ' + itemProps.billStatus
     const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
     const prevPrice = itemProps.previousPrice === 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
     const dateformat = new Date(itemProps.dueDate).toLocaleDateString()
-    
+    const updateBillCtx = useContext(UpdateBillsCtx)
+    const updateHistoryCtx = useContext(UpdateHistoryCtx)
 
     const [billValue, setBillValue] = useState<string>('');
     const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
@@ -32,7 +32,7 @@ function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
     const deleteItem = (id: string) => () => {
         const confirmation = window.confirm("Are you sure you want to delete the item?")
         if (confirmation) {
-            removeRecurringBill(id, updateBills)()
+            removeRecurringBill(id, updateBillCtx)()
         }
     }
 
@@ -64,7 +64,7 @@ function FeedItem({ itemProps, updateBills, updateHistory }: proptype) {
                 expirationDate: itemProps.dueDate,
                 recurringBillId: itemProps._id,
             }
-            addHistoryItem(historyObj, updateHistory, updateBills)()
+            addHistoryItem(historyObj, updateHistoryCtx, updateBillCtx)()
             setBillValue('')
         }
     }

@@ -1,18 +1,22 @@
 import { useState } from 'react';
-import { RecurringBillAddRequest } from '../api_actions/interfaces/api_interfaces';
-import { addRecurringBill } from '../api_actions/recurringBills';
+import { RecurringBillAddRequest } from 'api_actions/interfaces/api_interfaces';
+import { addRecurringBill } from 'api_actions/recurringBills';
 import { useNavigate } from "react-router-dom";
-import '../style/ItemForm.scss'
+import 'style/ItemForm.scss'
 
 function AddItemForm() {
     let navigate = useNavigate();
 
     const [title, setTitle] = useState<string>('');
+    const [billCategory, setBillCategory] = useState<string>('');
     const [gotoUrl, setGotoUrl] = useState<string>('');
     const [dueDate, setDueDate] = useState<Date | null>(null);
 
     const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(e.target.value)
+    }
+    const onChangeCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setBillCategory(e.target.value)
     }
     const onChangeDueDate = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newDate = new Date(e.target.value)
@@ -21,8 +25,6 @@ function AddItemForm() {
     const onChangeGotoUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
         setGotoUrl(e.target.value)
     }
-
-
 
     const validateFields = () => {
         const fields = [title]
@@ -38,8 +40,8 @@ function AddItemForm() {
             title,
             gotoUrl,
             dueDate,
+            billCategory
         }
-        console.log(formObject)
         addRecurringBill(formObject, navigate)()
     }
 
@@ -52,6 +54,10 @@ function AddItemForm() {
                 bill Name:
             </label>
             <input value={title} onChange={onChangeTitle} className="input-text title-input" type="text" name="title" id="billTitle-input" />
+            <label className="label item-title">
+                bill Category:
+            </label>
+            <input value={billCategory} onChange={onChangeCategory} className="input-text title-input" type="text" name="category" id="billCategory-input" />
             <label className="label item-title">
                  bill Url: <span className='detail'>(optional)</span>
             </label>

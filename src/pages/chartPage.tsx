@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import '../style/chartPage.scss'
+import 'style/chartPage.scss'
 
 import {
     Chart as ChartJS,
@@ -14,9 +14,9 @@ import {
     ChartData,
     ChartOptions,
 } from 'chart.js'
-import { LineChartData, LineChartDataComponent } from "../components/interfaces/interfaces";
-import { convertDate, flatten, getMonthName, getRangeOfMonths } from "../utils/general_utils";
-import { getChartData } from "../api_actions/history";
+import { LineChartData, LineChartDataComponent } from "components/interfaces/interfaces";
+import { convertDate, flatten, getMonthName, getRangeOfMonths } from "utils/general_utils";
+import { getChartData } from "api_actions/history";
 import _ from "lodash";
 
 ChartJS.register(

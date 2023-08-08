@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { RecurringBillAddRequest, RecurringBillsResponse } from '../api_actions/interfaces/api_interfaces';
-import { editRecurringBill, getOneRecurringBill } from '../api_actions/recurringBills';
+import { RecurringBillAddRequest, RecurringBillsResponse } from 'api_actions/interfaces/api_interfaces';
+import { editRecurringBill, getOneRecurringBill } from 'api_actions/recurringBills';
 import { useNavigate, useParams } from "react-router-dom";
-import '../style/ItemForm.scss'
+import 'style/ItemForm.scss'
 
 
 function EditItemForm() {
@@ -10,6 +10,7 @@ function EditItemForm() {
     let { id } = useParams();
 
     const [title, setTitle] = useState<string>('');
+    const [billCategory, setBillCategory] = useState<string>('');
     const [gotoUrl, setGotoUrl] = useState<string>('');
     const [recBill, setRecBill] = useState<RecurringBillsResponse>();
 
@@ -18,6 +19,9 @@ function EditItemForm() {
 
     const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(e.target.value)
+    }
+    const onChangeCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setBillCategory(e.target.value)
     }
     const onChangeGotoUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
         setGotoUrl(e.target.value)
@@ -34,6 +38,7 @@ function EditItemForm() {
         const formObject: RecurringBillAddRequest = {
             title,
             gotoUrl,
+            billCategory
         }
         editRecurringBill(String(id), formObject, navigate)()
     }
@@ -54,6 +59,13 @@ function EditItemForm() {
                 <p className="old-value"> {recBill?.title}</p>
             </div>
             <input value={title} onChange={onChangeTitle} className="input-text title-input" type="text" name="title" id="billTitle-input" />
+            <div className="label-case">
+                <label className="label item-title">
+                    bill Category:
+                </label>
+                <p className="old-value"> {recBill?.billCategory}</p>
+            </div>
+            <input value={billCategory} onChange={onChangeCategory} className="input-text title-input" type="text" name="category" id="billCategory-input" />
             <div className="label-case">
                 <label className="label item-title">
                     bill Url:
