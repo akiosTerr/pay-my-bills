@@ -7,8 +7,7 @@
 </p>
 
 <h3>
-Do you have problems keeping up with all the bills you have to pay? <br>
-I do! I built this app so I can keep up with everything.
+PMB is a financial management tool, it keeps track of recurring expenses
 </h3>
 
 ![pay my bills](public/pmbdemo3.png)
