@@ -10,6 +10,7 @@ function FeedGroup({itemProps, categoryTitle}:proptype) {
     return ( 
         <div className="feed-group">
             <h1 className='group-title'>{categoryTitle}</h1>
+            <hr className='group-title-hr'/>
             <div className="item-container">
                 {itemProps.map((item) => (
                     <FeedItem key={item._id} itemProps={item}></FeedItem>

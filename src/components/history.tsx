@@ -57,6 +57,19 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
         return itemDate.getMonth() === currentFilterMonth?.monthValue
     })
 
+    function DisplayMonthFilter () {
+        if(allFilterMonths.length > 0) {
+            return (
+                <select onChange={selectOnChange} className='month-dropdown-select' name="month-filter" id="month-filter">
+                    {allFilterMonths.map(item => (
+                        <option key={item.monthLabel} className='month-option' value={item.monthLabel}>{item.monthLabel}</option>
+                    ))}
+                </select>
+            )
+        }
+        else return null
+    }
+
     const getTotal = () => {
         const values =  filteredArrayProps.map(item => Number(item.value))
         const total = values.reduce((prev,cur) => {
@@ -71,11 +84,7 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
                 <h1 className="history-title">
                     Payment History
                 </h1>
-                <select onChange={selectOnChange} className='month-dropdown-select' name="month-filter" id="month-filter">
-                    {allFilterMonths.map(item => (
-                        <option key={item.monthLabel} className='month-option' value={item.monthLabel}>{item.monthLabel}</option>
-                    ))}
-                </select>
+                <DisplayMonthFilter></DisplayMonthFilter>
             </div>
             <div className="total-section">
                 <h2 className="total-label">Total:</h2>

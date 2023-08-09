@@ -6,7 +6,7 @@ import "style/navbar.scss"
 function NavBar() {
     return ( 
         <div className="header-nav-bar">
-            <ul className="nav-bar">
+            <div className="nav-bar">
                 <Link className="nav-bar-item" to='chart'>
                     <FaChartLine></FaChartLine>
                 </Link>
@@ -16,7 +16,7 @@ function NavBar() {
                 <Link className="nav-bar-item" to='add'>
                     <FaPlus></FaPlus>
                 </Link>
-            </ul>
+            </div>
         </div>
      );
 }

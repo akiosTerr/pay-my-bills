@@ -10,6 +10,11 @@ $safe: #093eec;
 $warning: #ff7300;
 $danger: #ec0606;
 
+.App {
+    text-align: center;
+    margin: 0px 26px;
+}  
+
 a {
     color: $base-text;
 }
@@ -33,9 +38,8 @@ a {
 
 .main-title {
     color: $base-text;
-    text-align: start;
-    padding-left: 1em;
 }
+
 .main-content {
     display: flex;
     flex-direction: column;
@@ -54,6 +58,9 @@ a {
             width: 100%;
             .group-title {
                 color: $base-text;
+            }
+            .group-title-hr {
+                width: 100%;
             }
             .item-container {
                 display: flex;
@@ -92,6 +99,7 @@ a {
                     color: $base-text;
                     background: $card;
                     border-radius: 6px;
+                    margin: 0px 10px;
                     .item-header {
                         display: flex;
                         flex-direction: column;
