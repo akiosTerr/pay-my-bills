@@ -1,19 +1,10 @@
-import axios from "axios";
 import { HistoryItemType, LineChartData } from "components/interfaces/interfaces";
-import api_config from 'config/api_config'
 import { HistoryAddRequest } from "api_actions/interfaces/api_interfaces";
-
-const api_path = api_config.apiUrl
-
-const axiosClient = axios.create({
-    baseURL:  api_path,
-    headers: {
-      "Content-type": "application/json"
-    }
-  });
+import { getAuthAxiosClient } from "./axiosInterface";
 
 export const getHistoryItems = (setHistoryItems: Function) => () => {
-    axiosClient.get('/history')
+  const axiosClient_wx = getAuthAxiosClient()  
+  axiosClient_wx.get('/history')
     .then((response) => {
       const items: HistoryItemType[] = response.data
       setHistoryItems(items)
@@ -24,7 +15,9 @@ export const getHistoryItems = (setHistoryItems: Function) => () => {
 }
 
 export const addHistoryItem = (historyItem: HistoryAddRequest, updateHistory: Function, updateBills: Function) => () => {
-    axiosClient.post('/history',historyItem)
+  const axiosClient_wx = getAuthAxiosClient()
+  
+  axiosClient_wx.post('/history',historyItem)
     .then((response) => {
       console.log(response)
       updateHistory()
@@ -36,7 +29,8 @@ export const addHistoryItem = (historyItem: HistoryAddRequest, updateHistory: Fu
 }
 
 export const getChartData = (setChartData: Function) => () => {
-  axiosClient.get('/history/chart')
+  const axiosClient_wx = getAuthAxiosClient()
+  axiosClient_wx.get('/history/chart')
     .then((response) => {
       const items: LineChartData[] = response.data
       setChartData(items)

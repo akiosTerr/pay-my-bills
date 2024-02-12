@@ -3,6 +3,7 @@ import { RecurringBillAddRequest, RecurringBillsResponse } from 'api_actions/int
 import { editRecurringBill, getOneRecurringBill } from 'api_actions/recurringBills';
 import { useNavigate, useParams } from "react-router-dom";
 import 'style/ItemForm.scss'
+import withAuth from 'hoc/PrivateRoute';
 
 
 function EditItemForm() {
@@ -11,7 +12,6 @@ function EditItemForm() {
 
     const [title, setTitle] = useState<string>('');
     const [billCategory, setBillCategory] = useState<string>('');
-    const [gotoUrl, setGotoUrl] = useState<string>('');
     const [recBill, setRecBill] = useState<RecurringBillsResponse>();
 
     useEffect(getOneRecurringBill(String(id),setRecBill),[])
@@ -22,9 +22,6 @@ function EditItemForm() {
     }
     const onChangeCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
         setBillCategory(e.target.value)
-    }
-    const onChangeGotoUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setGotoUrl(e.target.value)
     }
 
     const validateFields = () => {
@@ -37,7 +34,6 @@ function EditItemForm() {
         e.preventDefault()
         const formObject: RecurringBillAddRequest = {
             title,
-            gotoUrl,
             billCategory
         }
         editRecurringBill(String(id), formObject, navigate)()
@@ -66,13 +62,6 @@ function EditItemForm() {
                 <p className="old-value"> {recBill?.billCategory}</p>
             </div>
             <input value={billCategory} onChange={onChangeCategory} className="input-text title-input" type="text" name="category" id="billCategory-input" />
-            <div className="label-case">
-                <label className="label item-title">
-                    bill Url:
-                </label>
-                <p className="old-value"> {recBill?.gotoUrl}</p>
-            </div>
-            <input placeholder='https://url.com' value={gotoUrl} onChange={onChangeGotoUrl} className="input-text goto-input" type="text" name="gotoUrl" id="gotoUrl-input" />
             <button className="cancel-button" onClick={goToHome}>
                 CANCEL
             </button>
@@ -83,4 +72,4 @@ function EditItemForm() {
     );
 }
 
-export default EditItemForm;
+export default withAuth(EditItemForm);

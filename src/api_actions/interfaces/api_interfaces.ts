@@ -1,21 +1,26 @@
-import { BillStatus } from "../../components/interfaces/interfaces"
 
 export interface RecurringBillsResponse {
     _id: string
     title: string
-    previousPrice: string
-    gotoUrl: string
-    value: string
-    billStatus: BillStatus
     billCategory: string
-    dueDate: string
+    nextExpirationDate: string
+    expirationDay: number
+    user: string
 }
 
 export interface RecurringBillAddRequest {
     title: string
-    gotoUrl: string
     billCategory: string
-    dueDate?: Date
+    expirationDay?: Number
+}
+
+export interface LoginData {
+    email: string
+    password: string
+}
+
+export interface LoginResponse {
+    token: string
 }
 
 export interface HistoryAddRequest {

@@ -8,6 +8,8 @@ import { getHistoryItems } from 'api_actions/history';
 import FeedGroup from 'components/feedGroup';
 import { UpdateHistoryCtx, UpdateBillsCtx } from 'Contexts'
 import { uniq } from 'lodash'
+import { getDaysDifference } from 'utils/general_utils';
+import withAuth from 'hoc/PrivateRoute';
 
 
 function Mainfeed() {
@@ -18,15 +20,13 @@ function Mainfeed() {
     const setFormatedRecurringBills = (items: RecurringBillsResponse[]) => {
 
         const formated = items.map(item => {
-
+            const dayCountLabel = getDaysDifference(item.nextExpirationDate)
             return {
                 _id: item._id,
                 title: item.title,
-                previousPrice: item.previousPrice,
-                gotoUrl: item.gotoUrl,
-                dueDate: item.dueDate,
-                billStatus: item.billStatus,
                 billCategory: item.billCategory,
+                nextExpirationDate: item.nextExpirationDate,
+                dayCountLabel
             }
         })
         const categories = formated.map((item) => item.billCategory)
@@ -71,4 +71,4 @@ function Mainfeed() {
     );
 }
 
-export default Mainfeed;
+export default withAuth(Mainfeed);

@@ -4,7 +4,6 @@ $gray: #939c9c;
 $active: #00b837;
 $card: #01023f;
 
-
 $paid: #2fad10;
 $safe: #093eec;
 $warning: #ff7300;
@@ -99,7 +98,8 @@ a {
                     color: $base-text;
                     background: $card;
                     border-radius: 6px;
-                    margin: 0px 10px;
+                    margin: 0px 15px;
+                    flex: 0 0 20%;
                     .item-header {
                         display: flex;
                         flex-direction: column;
@@ -135,6 +135,9 @@ a {
                                 
                             }
                         }
+                        .days-count {
+                            display: inline;
+                        }
                         .expiration-section {
                             display: flex;
                             flex-direction: row;
@@ -149,15 +152,14 @@ a {
                     }
                     .item-body {
                         display: flex;
-                        flex-direction: row;
+                        flex-direction: column;
                         justify-content: center;
                         align-items: center;
                         margin-bottom: 20px;
                         .current-price-section {
                             display: flex;
                             flex-direction: column;
-                            align-items: flex-start;
-                            margin-right: 20px;
+                            align-items: center;
                             flex-basis: 30%;
                             height: 60px;
                             .current-price-label {
@@ -216,7 +218,6 @@ a {
                             border: none;
                             height: 40px;
                             width: 50%;
-                            margin-right: 10px;
                             margin-bottom: 25px;
                             cursor: pointer;
                         }

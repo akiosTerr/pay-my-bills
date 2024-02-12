@@ -9,6 +9,8 @@ import './style/base.scss'
 import AddItemForm from './pages/addItemForm';
 import EditItemForm from './pages/editItemForm';
 import ChartPage from './pages/chartPage';
+import LoginForm from 'pages/loginForm';
+import RequireAuth from 'hoc/PrivateRoute';
 
 function App() {
 
@@ -19,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Mainfeed />} />
           <Route path="/add" element={<AddItemForm />} />
-          <Route path="/edit/:id" element={<EditItemForm />} />
+          <Route path="/edit/:id" element={<EditItemForm/>} />
           <Route path="/chart" element={<ChartPage />} />
         </Routes>
       </Router>

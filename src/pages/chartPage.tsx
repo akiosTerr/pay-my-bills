@@ -18,6 +18,7 @@ import { LineChartData, LineChartDataComponent } from "components/interfaces/int
 import { convertDate, flatten, getMonthName, getRangeOfMonths } from "utils/general_utils";
 import { getChartData } from "api_actions/history";
 import _ from "lodash";
+import withAuth from "hoc/PrivateRoute";
 
 ChartJS.register(
     CategoryScale,
@@ -176,4 +177,4 @@ function ChartPage() {
     );
 }
 
-export default ChartPage;
+export default withAuth(ChartPage);

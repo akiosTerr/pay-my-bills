@@ -13,10 +13,10 @@ interface proptype {
 
 
 function FeedItem({ itemProps}: proptype) {
-    const itemClass = 'feed-item ' + itemProps.billStatus
-    const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
-    const prevPrice = itemProps.previousPrice === 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
-    const dateformat = new Date(itemProps.dueDate).toLocaleDateString()
+    // const itemClass = 'feed-item ' + itemProps.billStatus
+    // const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
+    // const prevPrice = itemProps.previousPrice === 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
+    const dateformat = new Date(itemProps.nextExpirationDate).toLocaleDateString()
     const updateBillCtx = useContext(UpdateBillsCtx)
     const updateHistoryCtx = useContext(UpdateHistoryCtx)
 
@@ -24,7 +24,7 @@ function FeedItem({ itemProps}: proptype) {
     const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
 
     useEffect(() => {
-        const readyToPay = itemProps.billStatus === BillStatus.warning || itemProps.billStatus === BillStatus.danger
+        const readyToPay = true
         const fieldNotEmpty = billValue.length > 1
         setPayBtnActiveValue(!(readyToPay && fieldNotEmpty))
     }, [billValue, payBtnActiveValue, itemProps])
@@ -41,18 +41,7 @@ function FeedItem({ itemProps}: proptype) {
         setBillValue(e.target.value)
     }
 
-    const showUrl = () => {
-        const show = itemProps.gotoUrl.slice(0, 4) === 'http'
-        if (show) {
-            return (
-                <a href={itemProps.gotoUrl} title="go to website bill" className="btn goto-url-btn" rel="noreferrer" target="_blank">
-                    <FiExternalLink />
-                </a>
-            )
-        } else {
-            return null
-        }
-    }
+    
 
     const payBill = () => {
         if (billValue.length > 0) {
@@ -61,7 +50,7 @@ function FeedItem({ itemProps}: proptype) {
                 title: itemProps.title,
                 value: Number(billValue),
                 paymentDate: currentDate,
-                expirationDate: itemProps.dueDate,
+                expirationDate: itemProps.nextExpirationDate,
                 recurringBillId: itemProps._id,
             }
             addHistoryItem(historyObj, updateHistoryCtx, updateBillCtx)()
@@ -70,7 +59,7 @@ function FeedItem({ itemProps}: proptype) {
     }
 
     return (
-        <div className={itemClass}>
+        <div className="feed-item">
             <div className="item-header">
                 <div className="title-section">
                     <h1 className="feed-item-title">{itemProps.title}</h1>
@@ -81,22 +70,20 @@ function FeedItem({ itemProps}: proptype) {
                         <Link to={`edit/${itemProps._id}`} title="edit bill" className="btn edit-item-btn">
                             <FiEdit />
                         </Link>
-                        {showUrl()}
                     </div>
+                </div>
+                <div className="days-count">
+                    <h3>{itemProps.dayCountLabel}</h3>
                 </div>
                 <div className="expiration-section">
                     <p className="expiration-label">Due</p>
-                    <p className={dueDateClass}>{dateformat}</p>
+                    <p>{dateformat}</p>
                 </div>
             </div>
             <div className="item-body">
                 <div className="current-price-section">
                     <p className="current-price-label">current price:</p>
                     <input value={billValue} onChange={onChangeBillValue} className="current-price-input" pattern="[0-9]*" type="text" name="current-price" id="current-price" />
-                </div>
-                <div className="previous-price-section">
-                    <p className="previous-price-label">Previous Price:</p>
-                    <p className="previous-price">{prevPrice}</p>
                 </div>
             </div>
             <div className="item-lower">

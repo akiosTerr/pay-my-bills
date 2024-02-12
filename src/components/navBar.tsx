@@ -1,9 +1,14 @@
+import { useAuth } from "hooks/auth_hook";
 import { FaChartLine, FaPlus, FaHome } from "react-icons/fa"
 import { Link } from "react-router-dom";
 import "style/navbar.scss"
 
 
 function NavBar() {
+    const {loggedIn} = useAuth()
+    if(!loggedIn) {
+        return null
+    }
     return ( 
         <div className="header-nav-bar">
             <div className="nav-bar">

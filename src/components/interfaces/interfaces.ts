@@ -14,11 +14,9 @@ export interface LineChartData {
 export interface feedItemType {
     _id: string
     title: string
-    previousPrice: string
-    gotoUrl: string
-    dueDate: string
+    nextExpirationDate: string
     billCategory: string
-    billStatus?: BillStatus
+    dayCountLabel: string
 }
 
 export interface LineChartDataComponent {

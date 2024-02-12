@@ -1,19 +1,10 @@
-import axios from "axios";
-import { HistoryItemType } from "../components/interfaces/interfaces";
-import api_config from '../config/api_config'
+import { getAuthAxiosClient } from "./axiosInterface";
 import { RecurringBillAddRequest, RecurringBillsResponse } from "./interfaces/api_interfaces";
 
-const api_path = api_config.apiUrl
-
-const axiosClient = axios.create({
-    baseURL:  api_path,
-    headers: {
-      "Content-type": "application/json"
-    }
-  });
 
 export const getRecurringBills = (setRecurringBills: Function) => () => {
-    axiosClient.get('/recurring-bills')
+  const axiosClient_wx = getAuthAxiosClient()
+  axiosClient_wx.get('/recurring-bills')
     .then((response) => {
       const items: RecurringBillsResponse[] = response.data
       setRecurringBills(items)
@@ -24,7 +15,8 @@ export const getRecurringBills = (setRecurringBills: Function) => () => {
 }
 
 export const getOneRecurringBill = (id:string, setRecurringBill: Function) => () => {
-    axiosClient.get('/recurring-bills/'+id)
+    const axiosClient_wx = getAuthAxiosClient()
+    axiosClient_wx.get('/recurring-bills/'+id)
     .then((response) => {
       const item: RecurringBillsResponse = response.data
       setRecurringBill(item)
@@ -35,7 +27,8 @@ export const getOneRecurringBill = (id:string, setRecurringBill: Function) => ()
 }
 
 export const addRecurringBill = (newRecurringBill: RecurringBillAddRequest, navigate: Function) => () => {
-    axiosClient.post('/recurring-bills', newRecurringBill)
+    const axiosClient_wx = getAuthAxiosClient()
+    axiosClient_wx.post('/recurring-bills', newRecurringBill)
     .then((response) => {
       navigate("/")
     })
@@ -46,7 +39,8 @@ export const addRecurringBill = (newRecurringBill: RecurringBillAddRequest, navi
 
 
 export const editRecurringBill = (id: string, newRecurringBill: RecurringBillAddRequest, navigate: Function) => () => {
-    axiosClient.put('/recurring-bills/'+id, newRecurringBill)
+  const axiosClient_wx = getAuthAxiosClient()  
+  axiosClient_wx.put('/recurring-bills/'+id, newRecurringBill)
     .then((response) => {
       navigate("/")
     })
@@ -57,7 +51,8 @@ export const editRecurringBill = (id: string, newRecurringBill: RecurringBillAdd
 
 
 export const removeRecurringBill = (id: string, updateBills: Function) => () => {
-    axiosClient.delete('/recurring-bills/'+id)
+    const axiosClient_wx = getAuthAxiosClient()
+    axiosClient_wx.delete('/recurring-bills/'+id)
     .then((response) => {
       updateBills()
     })
