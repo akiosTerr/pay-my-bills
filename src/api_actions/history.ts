@@ -19,7 +19,6 @@ export const addHistoryItem = (historyItem: HistoryAddRequest, updateHistory: Fu
   
   axiosClient_wx.post('/history',historyItem)
     .then((response) => {
-      console.log(response)
       updateHistory()
       updateBills()
     })

@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { LoginData } from 'api_actions/interfaces/api_interfaces';
 import { isValidEmail } from 'utils/general_utils';
 import { getLoginToken } from 'api_actions/auth';
 import 'style/ItemForm.scss'
+import { SetProfileNameCtx } from 'Contexts';
 
 type LoginFormType = {
     login: Function
@@ -12,7 +13,14 @@ function LoginForm({login}:LoginFormType) {
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    
+
+    const profileNameCtx = useContext(SetProfileNameCtx)
+    if(!profileNameCtx){
+        return <></>
+    }
+
+    const {setProfileName} = profileNameCtx
+
 
     const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value)
@@ -34,8 +42,7 @@ function LoginForm({login}:LoginFormType) {
             email,
             password
         }
-        console.log('test')
-        getLoginToken(loginData,login)
+        getLoginToken(loginData, login, setProfileName)
     }
 
     return (

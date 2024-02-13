@@ -1,24 +1,23 @@
-import { useEffect, useState, useContext } from "react";
-import { FiExternalLink, FiTrash2, FiEdit } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useUpdateBillsCtx, useUpdateHistoryCtx } from 'Contexts';
 import { addHistoryItem } from "api_actions/history";
 import { removeRecurringBill } from "api_actions/recurringBills";
-import { BillStatus, feedItemType } from "components/interfaces/interfaces";
-import { UpdateBillsCtx, UpdateHistoryCtx } from 'Contexts'
+import { feedItemType } from "components/interfaces/interfaces";
+import { useEffect, useState } from "react";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 
 interface proptype {
     itemProps: feedItemType
 }
 
-
 function FeedItem({ itemProps}: proptype) {
     // const itemClass = 'feed-item ' + itemProps.billStatus
     // const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
     // const prevPrice = itemProps.previousPrice === 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
     const dateformat = new Date(itemProps.nextExpirationDate).toLocaleDateString()
-    const updateBillCtx = useContext(UpdateBillsCtx)
-    const updateHistoryCtx = useContext(UpdateHistoryCtx)
+    const updateBillCtx = useUpdateBillsCtx()
+    const updateHistoryCtx = useUpdateHistoryCtx()
 
     const [billValue, setBillValue] = useState<string>('');
     const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
@@ -37,11 +36,8 @@ function FeedItem({ itemProps}: proptype) {
     }
 
     const onChangeBillValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target)
         setBillValue(e.target.value)
     }
-
-    
 
     const payBill = () => {
         if (billValue.length > 0) {

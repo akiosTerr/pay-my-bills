@@ -1,9 +1,17 @@
 $base: #e0d9d9;
 
 
+
+.hide {
+    display: none;
+}
 .header-nav-bar {
     width: 100%;
     color: $base;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     .nav-bar {
         display: flex;
         flex-direction: row;

@@ -133,7 +133,6 @@ function ChartPage() {
         })
 
         const parsedMonths = mergedDates.map(date => {
-            console.log(date.getMonth())
             return getMonthName(date.getMonth())
         })
         const uniqueMonths = _.uniq(parsedMonths)
