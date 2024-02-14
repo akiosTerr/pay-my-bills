@@ -8,18 +8,22 @@ interface historyItemProp {
 }
 
 function HistoryItem({ historyItemProp }: historyItemProp) {
-  const updateHistoryCtx = useUpdateHistoryCtx()
+  const updateHistoryCtx = useUpdateHistoryCtx();
   const valueformat = `R$ ${historyItemProp.value}`;
   const paymentDate = new Date(
     historyItemProp.paymentDate
   ).toLocaleDateString();
   const dueDate = new Date(historyItemProp.expirationDate).toLocaleDateString();
+
   const deleteItem = (id: string) => () => {
-    const confirmation = window.confirm("Are you sure you want to delete the item?")
+    const confirmation = window.confirm(
+      "Are you sure you want to delete the item?"
+    );
     if (confirmation) {
-      removeHistoryItem(id, updateHistoryCtx)
+      removeHistoryItem(id, updateHistoryCtx);
     }
-}
+  };
+  
   return (
     <div className="history-item">
       <div className="title-section">
