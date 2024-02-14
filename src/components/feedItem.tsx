@@ -5,16 +5,16 @@ import { feedItemType } from "components/interfaces/interfaces";
 import { useEffect, useState } from "react";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { calculateBillStatus } from 'utils/general_utils';
 
 
 interface proptype {
     itemProps: feedItemType
 }
 
+
 function FeedItem({ itemProps}: proptype) {
-    // const itemClass = 'feed-item ' + itemProps.billStatus
-    // const dueDateClass = 'expiration ' + itemProps.billStatus + '-color'
-    // const prevPrice = itemProps.previousPrice === 'no payments' ? itemProps.previousPrice : 'R$ ' + itemProps.previousPrice
+    const billStatus = calculateBillStatus(itemProps.dayCount)
     const dateformat = new Date(itemProps.nextExpirationDate).toLocaleDateString()
     const updateBillCtx = useUpdateBillsCtx()
     const updateHistoryCtx = useUpdateHistoryCtx()
@@ -55,7 +55,7 @@ function FeedItem({ itemProps}: proptype) {
     }
 
     return (
-        <div className="feed-item">
+        <div className={`feed-item ${billStatus}`}>
             <div className="item-header">
                 <div className="title-section">
                     <h1 className="feed-item-title">{itemProps.title}</h1>
@@ -73,7 +73,7 @@ function FeedItem({ itemProps}: proptype) {
                 </div>
                 <div className="expiration-section">
                     <p className="expiration-label">Due</p>
-                    <p>{dateformat}</p>
+                    <p className={`expiration ${billStatus}`}>{dateformat}</p>
                 </div>
             </div>
             <div className="item-body">

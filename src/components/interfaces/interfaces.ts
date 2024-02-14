@@ -17,6 +17,7 @@ export interface feedItemType {
     nextExpirationDate: string
     billCategory: string
     dayCountLabel: string
+    dayCount: number
 }
 
 export interface LineChartDataComponent {

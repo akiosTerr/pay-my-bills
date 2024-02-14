@@ -147,6 +147,18 @@ a {
                             }
                             .expiration {
                                 font-weight: bold;
+                                &.danger {
+                                    color: $danger
+                                }
+                                &.warning {
+                                    color: $warning
+                                }
+                                &.safe {
+                                    color: $safe
+                                }
+                                &.paid {
+                                    color: $paid
+                                }
                             }
                         }
                     }

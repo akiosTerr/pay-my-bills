@@ -1,8 +1,6 @@
 import { useAuthCtx } from "Contexts";
-import { useAuth } from "hooks/auth_hook";
 import LoginForm from "pages/loginForm";
 import { FC } from "react";
-import { Navigate } from "react-router-dom";
 
 
 const RequireAuth: FC<{ children: React.ReactElement }> = ({ children }) => {
