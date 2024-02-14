@@ -27,6 +27,18 @@ export const addHistoryItem = (historyItem: HistoryAddRequest, updateHistory: Fu
     });
 }
 
+export const removeHistoryItem = (historyItemId: string, updateHistory: Function) => {
+  const axiosClient_wx = getAuthAxiosClient()
+  axiosClient_wx.delete('/history/'+historyItemId)
+  .then((response) => {
+    updateHistory()
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
+
 export const getChartData = (setChartData: Function) => () => {
   const axiosClient_wx = getAuthAxiosClient()
   axiosClient_wx.get('/history/chart')

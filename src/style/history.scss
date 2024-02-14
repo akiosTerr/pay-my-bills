@@ -1,6 +1,7 @@
 $base-text: #cddbcd; 
 $highlight: #2fad10;
 $card: #000;
+$danger: #ec0606;
 
 
 .history {
@@ -95,7 +96,12 @@ $card: #000;
                     font-weight: bold;
                 }
             }
-            
+            .delete-item-btn {
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                color: $danger
+            }
         }
     }
 }

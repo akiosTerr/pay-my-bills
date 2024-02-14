@@ -6,7 +6,7 @@ import {
   feedItemType,
   HistoryItemType,
 } from "components/interfaces/interfaces";
-import History from "components/history";
+import History from "components/historyModule";
 import { getHistoryItems } from "api_actions/history";
 import FeedGroup from "components/feedGroup";
 import { UpdateHistoryCtx, UpdateBillsCtx } from "Contexts";

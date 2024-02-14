@@ -1,5 +1,5 @@
 export interface HistoryItemType {
-    _id?: string
+    _id: string
     title: string
     value: string
     paymentDate: string

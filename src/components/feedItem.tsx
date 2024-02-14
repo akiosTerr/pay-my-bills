@@ -18,6 +18,7 @@ function FeedItem({ itemProps}: proptype) {
     const dateformat = new Date(itemProps.nextExpirationDate).toLocaleDateString()
     const updateBillCtx = useUpdateBillsCtx()
     const updateHistoryCtx = useUpdateHistoryCtx()
+    const maxLenght = 8
 
     const [billValue, setBillValue] = useState<string>('');
     const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
@@ -36,7 +37,9 @@ function FeedItem({ itemProps}: proptype) {
     }
 
     const onChangeBillValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setBillValue(e.target.value)
+        if (e.target.value.length <= maxLenght) {
+            setBillValue(e.target.value)
+        }
     }
 
     const payBill = () => {
@@ -79,7 +82,7 @@ function FeedItem({ itemProps}: proptype) {
             <div className="item-body">
                 <div className="current-price-section">
                     <p className="current-price-label">current price:</p>
-                    <input value={billValue} onChange={onChangeBillValue} className="current-price-input" pattern="[0-9]*" type="text" name="current-price" id="current-price" />
+                    <input value={billValue} maxLength={5} onChange={onChangeBillValue} className="current-price-input" type="number" name="current-price" id="current-price" />
                 </div>
             </div>
             <div className="item-lower">

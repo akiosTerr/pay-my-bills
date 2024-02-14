@@ -20,10 +20,13 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
     const [currentFilterMonth, setCurrentFilterMonth] = useState<monthOptionValues | undefined>(undefined)
     
     useEffect(() => {
-        setMonthValues()
+        if(allFilterMonths.length === 0){
+            setMonthValues()
+        }
     },[historyItemArrayProp])
    
     const selectOnChange = (e:any) => {
+        console.log(e.target.value)
         const filterMonth = allFilterMonths.find(item => {
             return item.monthLabel === e.target.value
         })
@@ -31,6 +34,8 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
     }
 
     const setMonthValues = () => {
+        console.log('set month values')
+
         const monthValues = historyItemArrayProp.map(item => {
             const expirationDate = new Date(convertDate(item.expirationDate))
             const monthValue = expirationDate.getMonth()
@@ -67,7 +72,7 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
                 </select>
             )
         }
-        else return null
+        else return <></>
     }
 
     const getTotal = () => {
@@ -76,6 +81,10 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
             return prev+cur
         },0)
         return total.toFixed(2)
+    }
+
+    if(historyItemArrayProp.length < 1) {
+        return <></>
     }
 
     return ( 
@@ -98,7 +107,6 @@ function History({historyItemArrayProp}: HistoryArrayPropType) {
                             <HistoryItem historyItemProp={item}></HistoryItem>
                             <hr className='line-separator' />
                         </div>
-                        
                     ))
                 }
             </div>
