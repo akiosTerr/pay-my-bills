@@ -13,7 +13,7 @@ export const getAuthAxiosClient = () => {
         token = ""
     }
     return axios.create({
-        baseURL:  Environments.local,
+        baseURL:  Environments.prod,
         headers: {
           "Content-type": "application/json",
           "Access-Control-Allow-Origin": "*",
