@@ -1,9 +1,9 @@
 import axios from "axios";
-import { local_url, prod_url } from "config/url_data";
+import { prod_url } from "config/url_data";
 import Cookies from "js-cookie";
 
 const Environments = {
-    local: local_url,
+    local: "http://localhost:3001",
     prod: prod_url
 }
 
