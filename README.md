@@ -9,7 +9,6 @@
 PMB is a financial management UI tool
 </h3>
 
-### Pay My Bills is a basic recurring expenses management web app  
 It is actually very simple:   
 you register a new bill with the name, the next expiration date and a (optional) url to access the website of the bill,  
 the bill item will keep up with the expiration day and warn you by status colors:
