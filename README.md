@@ -6,9 +6,8 @@
 </p>
 
 <h3>
-PMB is a financial management tool, it keeps track of recurring expenses
+PMB is a financial management UI tool
 </h3>
-
 
 ### Pay My Bills is a basic recurring expenses management web app  
 It is actually very simple:   
