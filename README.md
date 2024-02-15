@@ -9,7 +9,6 @@
 PMB is a financial management tool, it keeps track of recurring expenses
 </h3>
 
-![pay my bills](public/pmbdemo3.png)
 
 ### Pay My Bills is a basic recurring expenses management web app  
 It is actually very simple:   
@@ -24,18 +23,3 @@ once you click the "pay bill" button (after typing the value)
 it will reset for the next month and register the payment on the Payment History section.  
 Remember, the app only lets you click the "pay bill" button on the yellow or red status.  
 
-
-the first functional prototype is ready, but there is a MILLION things to improve,  
-I plan to add a lot more features for general financial management.
-
-## Comming soon
-Line chart component to visualize your monthly expenses
-
-![pay my bills](public/line-chart.png)
-
-
-### Node API: <a href="https://github.com/akiosTerr/pay-my-bills-api">pay-my-bills-api</a>  
-to use it, just put your mongo URI on the config file, you know how it is
-
-
-*like always, feel free to make suggestions!*
