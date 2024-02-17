@@ -70,6 +70,9 @@ input[type="number"]::-webkit-outer-spin-button {
       .item-container {
         display: flex;
         flex-direction: row;
+        overflow-x: scroll;
+        padding-bottom: .5em;
+        margin-bottom: .5em;
         .paid::before {
           content: "";
           background-color: $paid;

@@ -42,7 +42,7 @@ function Mainfeed() {
     if (authCtx) {
       getRecurringBills(setFormatedRecurringBills, authCtx.logout)();
     }
-  };
+  };  
 
   const getHistoryItemsApiCall = () => {
     if (authCtx) {
@@ -55,10 +55,11 @@ function Mainfeed() {
 
   return (
     <>
-      <h1 className="main-title">My Finance data</h1>
+      <h1 className="main-title">My Payment data</h1>
       <div className="main-content">
         <UpdateHistoryCtx.Provider value={getHistoryItemsApiCall}>
           <UpdateBillsCtx.Provider value={getRecurringBillsApiCall}>
+            <History historyItemArrayProp={historyItems}></History>
             <div className="main-feed">
               {billCategories.map((cat) => {
                 const filtered_bills = recurringBills.filter(
@@ -73,7 +74,6 @@ function Mainfeed() {
                 );
               })}
             </div>
-            <History historyItemArrayProp={historyItems}></History>
           </UpdateBillsCtx.Provider>
         </UpdateHistoryCtx.Provider>
       </div>

@@ -46,7 +46,7 @@ export const getDaysDifference = (date: string) => {
 
     const difference = inputDate.getTime() - today.getTime();
 
-    const daysDifference = Math.ceil(difference / (1000 * 60 * 60 * 24));
+    const daysDifference = Math.floor(difference / (1000 * 60 * 60 * 24));
 
     return daysDifference
 }
@@ -54,7 +54,7 @@ export const getDaysDifference = (date: string) => {
 export const calculateBillStatus = (dayDifference: number) => {
     let status = ''
     switch (true) {
-        case dayDifference < 0:
+        case dayDifference < 1:
             status = 'danger'
             break;
         case dayDifference < 6:
