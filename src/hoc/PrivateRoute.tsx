@@ -5,7 +5,6 @@ import { FC } from "react";
 
 const RequireAuth: FC<{ children: React.ReactElement }> = ({ children }) => {
   const authCtx = useAuthCtx()
-  console.log(authCtx)
   if (authCtx && authCtx.isLoggedIn) {
     return children;
   } 

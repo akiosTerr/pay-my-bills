@@ -56,7 +56,7 @@ function AddItemForm() {
             <input value={billCategory} onChange={onChangeCategory} className="input-text title-input" type="text" name="category" id="billCategory-input" />
            
             <label className="label item-title">
-                next expiration date:
+                next expiration day number:
             </label>
             <input onChange={onChangeDueDate} className="input-text expire-input" type="number" name="due" id="expire-input" />
             <button disabled={validateFields()} className="submit-button" type="submit" value="Submit">

@@ -2,7 +2,7 @@ import { getAuthAxiosClient } from "./axiosInterface";
 import { RecurringBillAddRequest, RecurringBillsResponse } from "./interfaces/api_interfaces";
 
 
-export const getRecurringBills = (setRecurringBills: Function) => () => {
+export const getRecurringBills = (setRecurringBills: Function, logout: Function) => () => {
   const axiosClient_wx = getAuthAxiosClient()
   axiosClient_wx.get('/recurring-bills')
     .then((response) => {
@@ -11,6 +11,9 @@ export const getRecurringBills = (setRecurringBills: Function) => () => {
     })
     .catch((error) => {
       console.error(error);
+      if(error.response && error.response.status === 401){
+        logout()
+      }
     });
 }
 

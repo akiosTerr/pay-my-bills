@@ -4,17 +4,18 @@ import { useEffect, useState } from "react";
 export const useAuth = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     useEffect(() => {
-      // Check if the user is logged in (e.g., by checking if a token exists in local storage)
       const token = Cookies.get('jwtToken');
       if (token) {
         setLoggedIn(true);
       } else {
-        setLoggedIn(false);
+        logout();
       }
     }, [loggedIn]);
   
     const login = (token: string) => {
-      Cookies.set('jwtToken', token, { expires: 1 });
+      const expirationDate = new Date();
+      expirationDate.setTime(expirationDate.getTime() + 6 * 60 * 60 * 1000);
+      Cookies.set('jwtToken', token, { expires: expirationDate});
       setLoggedIn(true);
     };
   

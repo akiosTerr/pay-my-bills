@@ -13,10 +13,8 @@ interface AuthContextType {
     logout: Function
 }
 
-
-
-export const UpdateBillsCtx = createContext(getRecurringBills(() => null));
-export const UpdateHistoryCtx = createContext(getHistoryItems(() => null));
+export const UpdateBillsCtx = createContext(getRecurringBills(() => null, () => null));
+export const UpdateHistoryCtx = createContext(getHistoryItems(() => null, () => null));
 export const SetProfileNameCtx = createContext<ProfileNameContextType | undefined>(undefined);
 export const SetAuthCtx = createContext<AuthContextType | undefined>(undefined);
 

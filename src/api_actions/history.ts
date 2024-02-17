@@ -2,7 +2,7 @@ import { HistoryItemType, LineChartData } from "components/interfaces/interfaces
 import { HistoryAddRequest } from "api_actions/interfaces/api_interfaces";
 import { getAuthAxiosClient } from "./axiosInterface";
 
-export const getHistoryItems = (setHistoryItems: Function) => () => {
+export const getHistoryItems = (setHistoryItems: Function, logout: Function) => () => {
   const axiosClient_wx = getAuthAxiosClient()  
   axiosClient_wx.get('/history')
     .then((response) => {
@@ -11,6 +11,9 @@ export const getHistoryItems = (setHistoryItems: Function) => () => {
     })
     .catch((error) => {
       console.error(error);
+      if(error.response && error.response.status === 401){
+        logout()
+      }
     });
 }
 

@@ -9,7 +9,7 @@ import {
 import History from "components/historyModule";
 import { getHistoryItems } from "api_actions/history";
 import FeedGroup from "components/feedGroup";
-import { UpdateHistoryCtx, UpdateBillsCtx } from "Contexts";
+import { UpdateHistoryCtx, UpdateBillsCtx, useAuthCtx } from "Contexts";
 import { uniq } from "lodash";
 import { getDayLabel, getDaysDifference } from "utils/general_utils";
 import withAuth from "hoc/PrivateRoute";
@@ -18,6 +18,7 @@ function Mainfeed() {
   const [billCategories, setBillCategories] = useState<string[]>([]);
   const [recurringBills, setRecurringBills] = useState<feedItemType[]>([]);
   const [historyItems, setHistoryItems] = useState<HistoryItemType[]>([]);
+  const authCtx = useAuthCtx();
 
   const setFormatedRecurringBills = (items: RecurringBillsResponse[]) => {
     const formated = items.map((item) => {
@@ -38,11 +39,15 @@ function Mainfeed() {
   };
 
   const getRecurringBillsApiCall = () => {
-    getRecurringBills(setFormatedRecurringBills)();
+    if (authCtx) {
+      getRecurringBills(setFormatedRecurringBills, authCtx.logout)();
+    }
   };
 
   const getHistoryItemsApiCall = () => {
-    getHistoryItems(setHistoryItems)();
+    if (authCtx) {
+      getHistoryItems(setHistoryItems, authCtx.logout)();
+    }
   };
 
   useEffect(getHistoryItemsApiCall, []);

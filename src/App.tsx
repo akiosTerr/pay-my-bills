@@ -11,12 +11,12 @@ import "./style/base.scss";
 
 function App() {
   const [profileName, setProfileName] = useState<string>("");
-  const { loggedIn, login, logout} = useAuth();
+  const { loggedIn, login, logout } = useAuth();
 
   return (
     <div className="App">
       <Router>
-        <SetAuthCtx.Provider value={{isLoggedIn: loggedIn, login, logout}}>
+        <SetAuthCtx.Provider value={{ isLoggedIn: loggedIn, login, logout }}>
           <SetProfileNameCtx.Provider value={{ setProfileName, profileName }}>
             <NavBar></NavBar>
             <Routes>
