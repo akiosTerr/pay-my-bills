@@ -22,10 +22,7 @@ function History({ historyItemArrayProp }: HistoryArrayPropType) {
   );
   const [currentFilterMonth, setCurrentFilterMonth] = useState<monthOptionValues | undefined>(undefined);
   useEffect(() => {
-    console.log("render useeffect")
-    if (allFilterMonths.length === 0) {
       setMonthValues();
-    }
   }, [historyItemArrayProp]);
 
   const handleSelectChange  = (e: any) => {

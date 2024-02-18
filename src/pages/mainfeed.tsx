@@ -50,8 +50,8 @@ function Mainfeed() {
     }
   };
 
-  useEffect(getHistoryItemsApiCall, []);
-  useEffect(getRecurringBillsApiCall, []);
+  useEffect(getHistoryItemsApiCall, [authCtx]);
+  useEffect(getRecurringBillsApiCall, [authCtx]);
 
   return (
     <>
