@@ -1,11 +1,31 @@
 import { FunctionComponent } from "react";
 import { Pie } from "react-chartjs-2";
-import { Chart, ArcElement } from "chart.js";
+import {
+  Chart,
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js'
 import { HistoryItemType } from "./interfaces/interfaces";
 import { cloneDeep } from "lodash";
-import type { ChartData, ChartOptions } from 'chart.js';
+import type { ChartOptions } from 'chart.js';
 
-Chart.register(ArcElement);
+
+Chart.register(
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+)
 
 const template_data = {
   labels: ["Red", "Blue", "Yellow"],

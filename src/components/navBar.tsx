@@ -48,9 +48,9 @@ function NavBar() {
     return ( 
         <div className={`header-nav-bar`}>
             <div className="nav-bar">
-                <Link className="nav-bar-item" to='chart'>
+                {/* <Link className="nav-bar-item" to='chart'>
                     <FaChartLine></FaChartLine>
-                </Link>
+                </Link> */}
                 <Link className="nav-bar-item" to='/'>
                     <FaHome></FaHome>
                 </Link>
