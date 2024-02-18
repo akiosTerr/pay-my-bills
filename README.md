@@ -21,3 +21,7 @@ once you click the "pay bill" button (after typing the value)
 it will reset for the next month and register the payment on the Payment History section.  
 Remember, the app only lets you click the "pay bill" button on the yellow or red status.  
 
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
