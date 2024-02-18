@@ -8,6 +8,7 @@ import ChartPage from "./pages/chartPage";
 import EditItemForm from "./pages/editItemForm";
 import Mainfeed from "./pages/mainfeed";
 import "./style/base.scss";
+import NotFound from "components/notFound";
 
 function App() {
   const [profileName, setProfileName] = useState<string>("");
@@ -20,10 +21,11 @@ function App() {
           <SetProfileNameCtx.Provider value={{ setProfileName, profileName }}>
             <NavBar></NavBar>
             <Routes>
+              <Route path="*" element={<NotFound />} />
               <Route path="/" element={<Mainfeed />} />
               <Route path="/add" element={<AddItemForm />} />
               <Route path="/edit/:id" element={<EditItemForm />} />
-              <Route path="/chart" element={<ChartPage />} />
+              {/* <Route path="/chart" element={<ChartPage />} /> */}
             </Routes>
           </SetProfileNameCtx.Provider>
         </SetAuthCtx.Provider>

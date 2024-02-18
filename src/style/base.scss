@@ -1,11 +1,43 @@
 body {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, #057d8d 0%, #550ebe 51%, #0611eb 100%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, #057d8d 0%, #550ebe 51%, #0611eb 100%);
 }
 h1 {
-    margin: 0px;
+  margin: 0px;
 }
 
 .App {
-    background: transparent;
+  background: transparent;
+}
+
+.not-found {
+    color: white;
+    border: 1px solid white;
+    width: 50%;
+    margin: auto;
+    margin-top: 8rem;
+    padding: 2rem;
+}
+
+/* Define scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f154; /* Color of the track */
+  border-radius: .5em;
+  cursor:pointer;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e2dbdbb4; /* Color of the handle */
+  border-radius: .5em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #fdfdfd; /* Color of the handle on hover */
 }
