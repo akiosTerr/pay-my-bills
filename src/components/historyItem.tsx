@@ -9,7 +9,7 @@ interface historyItemProp {
 
 function HistoryItem({ historyItemProp }: historyItemProp) {
   const updateHistoryCtx = useUpdateHistoryCtx();
-  const valueformat = `R$ ${historyItemProp.value}`;
+  const valueformat = `$ ${historyItemProp.value}`;
   const paymentDate = new Date(
     historyItemProp.paymentDate
   ).toLocaleDateString();

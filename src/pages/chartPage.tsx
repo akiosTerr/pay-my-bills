@@ -55,7 +55,7 @@ function ChartPage() {
                 displayColors: false,
                 callbacks: {
                     label: function (t) {
-                        const label = t.dataset.label + ': R$ ' + String(t.raw)
+                        const label = t.dataset.label + ': $ ' + String(t.raw)
                         return label
                     }
                 }

@@ -1,9 +1,14 @@
 {
-  "short_name": "PMB",
-  "name": "Pay My Bills UI",
+  "short_name": "Smart Cash Data",
+  "name": "SCD",
   "icons": [
     {
       "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logoscd.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
