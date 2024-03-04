@@ -13,7 +13,7 @@ function FeedGroup({itemProps, categoryTitle}:proptype) {
             <hr className='group-title-hr'/>
             <div className="item-container">
                 {itemProps.map((item) => (
-                    <FeedItem key={item._id} itemProps={item}></FeedItem>
+                    <FeedItem key={item._id} categoryGroup={categoryTitle} itemProps={item}></FeedItem>
                 ))}
             </div>
         </div>

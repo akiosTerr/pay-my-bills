@@ -10,10 +10,11 @@ import { calculateBillStatus } from 'utils/general_utils';
 
 interface proptype {
     itemProps: feedItemType
+    categoryGroup?: string
 }
 
 
-function FeedItem({ itemProps}: proptype) {
+function FeedItem({ itemProps, categoryGroup}: proptype) {
     const billStatus = calculateBillStatus(itemProps.dayCount)
     const dateformat = new Date(itemProps.nextExpirationDate).toLocaleDateString()
     const updateBillCtx = useUpdateBillsCtx()
@@ -51,6 +52,7 @@ function FeedItem({ itemProps}: proptype) {
                 paymentDate: currentDate,
                 expirationDate: itemProps.nextExpirationDate,
                 recurringBillId: itemProps._id,
+                recurringBillGroupId: categoryGroup
             }
             addHistoryItem(historyObj, updateHistoryCtx, updateBillCtx)()
             setBillValue('')

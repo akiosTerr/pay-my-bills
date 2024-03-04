@@ -3,6 +3,7 @@ export interface HistoryItemType {
     title: string
     value: string
     paymentDate: string
+    recurringBillGroupId: string
     expirationDate: string
 }
 

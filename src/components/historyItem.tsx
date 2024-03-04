@@ -23,7 +23,7 @@ function HistoryItem({ historyItemProp }: historyItemProp) {
       removeHistoryItem(id, updateHistoryCtx);
     }
   };
-  
+
   return (
     <div className="history-item">
       <div className="title-section">
@@ -32,6 +32,14 @@ function HistoryItem({ historyItemProp }: historyItemProp) {
           <h2 className="value">{valueformat}</h2>
         </div>
       </div>
+      {historyItemProp.recurringBillGroupId ? (
+        <div className="group-section">
+          <p className="group-label">Group:</p>
+          <p className="group-value">{historyItemProp.recurringBillGroupId}</p>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className="paid-section">
         <p className="paid-label">Paid in:</p>
         <p className="date">{paymentDate}</p>
