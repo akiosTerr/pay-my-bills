@@ -55,7 +55,7 @@ function Mainfeed() {
 
   return (
     <>
-      <h1 className="main-title">My Payment data</h1>
+      <h1 className="main-title">Dashboard</h1>
       <div className="main-content">
         <UpdateHistoryCtx.Provider value={getHistoryItemsApiCall}>
           <UpdateBillsCtx.Provider value={getRecurringBillsApiCall}>

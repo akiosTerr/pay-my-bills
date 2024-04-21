@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { calculateBillStatus } from 'utils/general_utils';
+import AddPaymentModal from './modal/addPaymentModal';
 
 
 interface proptype {
@@ -19,9 +20,11 @@ function FeedItem({ itemProps, categoryGroup}: proptype) {
     const dateformat = new Date(itemProps.nextExpirationDate).toLocaleDateString()
     const updateBillCtx = useUpdateBillsCtx()
     const updateHistoryCtx = useUpdateHistoryCtx()
+    
     const maxLenght = 8
-
+    
     const [billValue, setBillValue] = useState<string>('');
+    const [isAddPaymentModalOpen, setAddPaymentModal] = useState(false);
     const [payBtnActiveValue, setPayBtnActiveValue] = useState<boolean>(false);
 
     useEffect(() => {
@@ -61,6 +64,7 @@ function FeedItem({ itemProps, categoryGroup}: proptype) {
 
     return (
         <div className={`feed-item ${billStatus}`}>
+            <AddPaymentModal isOpen={isAddPaymentModalOpen} onClose={() => setAddPaymentModal(false)} />
             <div className="item-header">
                 <div className="title-section">
                     <h1 className="feed-item-title">{itemProps.title}</h1>
@@ -90,6 +94,7 @@ function FeedItem({ itemProps, categoryGroup}: proptype) {
             <div className="item-lower">
 
                 <button disabled={payBtnActiveValue} onClick={payBill} className="pay-bill">PAY BILL</button>
+                <button onClick={() => setAddPaymentModal(true)} className="pay-bill">Add Payment</button>
             </div>
         </div>
     );

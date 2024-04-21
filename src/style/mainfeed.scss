@@ -39,6 +39,10 @@ a {
   color: $base-text;
 }
 
+h1 {
+  color: $base-text;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -225,7 +229,7 @@ input[type="number"]::-webkit-outer-spin-button {
           }
           .item-lower {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             margin-top: 10px;

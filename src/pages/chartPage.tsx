@@ -77,7 +77,7 @@ function ChartPage() {
     const [datasets, setDatasets] = useState<LineChartDataComponent>(
         {
             labels: ['January', 'February', 'March',
-                'April', 'May'],
+                'April', 'May', 'May','May','May','May','May'],
             datasets: [
                 {
                     label: 'EDP',
@@ -86,7 +86,7 @@ function ChartPage() {
                     backgroundColor: '#19d800',
                     borderColor: '#19d800',
                     borderWidth: 2,
-                    data: [65, 59, 80, 81, 270],
+                    data: [65, 59, 80, 81, 270, 65, 59, 80, 41, 270],
                 },
                 {
                     label: 'SAEG',
@@ -95,7 +95,7 @@ function ChartPage() {
                     backgroundColor: '#0004ee',
                     borderColor: '#0004ee',
                     borderWidth: 2,
-                    data: [65, 33, 70, 90, 22],
+                    data: [65, 33, 70, 90, 22, 65, 59, 80, 81, 58],
                 },
                 {
                     label: 'ULTRAGAZ',
@@ -104,7 +104,7 @@ function ChartPage() {
                     backgroundColor: 'red',
                     borderColor: 'red',
                     borderWidth: 2,
-                    data: [33, 24, 60, 68, 75],
+                    data: [33, 24, 60, 68, 75, 65, 59, 45, 81, 270],
                 },
             ]
         }
@@ -128,7 +128,6 @@ function ChartPage() {
 
         const mergedDates = flatten(dates)
         mergedDates.sort((a,b) => {
-            //@ts-ignore
             return a - b
         })
 
@@ -138,12 +137,11 @@ function ChartPage() {
         const uniqueMonths = _.uniq(parsedMonths)
         const parsedData = filtered.map((item, i) => {
             item.data.sort((a,b) => {
-                const a_converted = convertDate(a.expiration)
-                const a_date = new Date(a_converted)
-                const b_converted = convertDate(b.expiration)
-                const b_date = new Date(b_converted)
-                //@ts-ignore
-                return a_date - b_date
+                const a_converted = convertDate(a.expiration); 
+                const a_date = new Date(a_converted).getTime(); 
+                const b_converted = convertDate(b.expiration); 
+                const b_date = new Date(b_converted).getTime(); 
+                return a_date - b_date;
             })
             const lineValues = item.data.map(i => i.value)
             return {
@@ -163,7 +161,8 @@ function ChartPage() {
         }
         setDatasets(finalLineData)
     }
-    useEffect(getChartData(parseChartData),[])
+
+    // useEffect(getChartData(parseChartData),[])
 
     return (
         <div className="chart-main">
