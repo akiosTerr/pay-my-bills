@@ -10,9 +10,16 @@ export const CryptoTableElement = styled.table`
   th {
     text-align: start;
   }
+  input {
+    height: 27px;
+  }
 `;
 
 export const Totalnetworth = styled.h2`
+  text-align: center;
+  margin: 10px 0;
+  border: 1px #11df11 solid;
+  padding: 10px;
   color: #11df11;
   font-size: 2rem;
 `;
@@ -29,6 +36,7 @@ export const TableNumberInput = styled.input`
   background-color: transparent;
 `
 export const CreateCryptoBtn = styled.button`
+  height: 27px;
   border: 1px solid white;
   width: 100%;
   color: lime;

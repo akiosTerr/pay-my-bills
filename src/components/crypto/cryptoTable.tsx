@@ -53,10 +53,10 @@ const CryptoTable: React.FC = () => {
       const total = coinValues.reduce(
         (accumulator, currentValue) => accumulator + currentValue
       );
-  
+
       return total;
     };
-  
+
     const getTotalUsd = () => {
       const totalValueList = cryptos.map(
         (crypto) => crypto.amount * getPriceUsd(crypto.name, currentPrice)
@@ -106,11 +106,16 @@ const CryptoTable: React.FC = () => {
               </td>
             </tr>
           ))}
+          <tr>
+            <td colSpan={7}>
+              <Totalnetworth>
+                Total: {formatToCurrency(totalBrl, "BRL")} {formatToCurrency(totalUsd)}
+              </Totalnetworth>
+            </td>
+          </tr>
         </tbody>
       </CryptoTableElement>
-      <Totalnetworth>
-        Total: {formatToCurrency(totalBrl, "BRL")} {formatToCurrency(totalUsd)}
-      </Totalnetworth>
+
     </>
   );
 };
