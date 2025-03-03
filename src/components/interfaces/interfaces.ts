@@ -37,3 +37,19 @@ export enum BillStatus {
     warning = "warning",
     danger = "danger",
 }
+
+export interface CryptoCurrency {
+    id?: string
+    urlname: string;
+    name: string;
+    symbol: string;
+    amount: number;
+    current_price_usd: number;
+    current_price_brl: number;
+}
+
+export interface CryptoCurrentPrice {
+    current_price_usd: number;
+    current_price_brl: number;
+}
+

@@ -1,13 +1,13 @@
-import BitcoinChart from "components/bitcoinChart"
-import LiveBitcoinPrice from "components/liveBitcoinPrice"
+import BitcoinChart from "components/crypto/bitcoinChart"
+import CryptoTable from "components/crypto/cryptoTable"
 
 
 function CryptoPage() {
     return (
         <div className="crypto">
             <h1>Crypto</h1>
-            <LiveBitcoinPrice/>
             <BitcoinChart/>
+            <CryptoTable/>
         </div>
 )
 }

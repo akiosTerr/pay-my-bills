@@ -1,11 +1,7 @@
 import axios from "axios";
-import { prod_url } from "config/url_data";
 import Cookies from "js-cookie";
 
-const Environments = {
-    local: "http://localhost:3001",
-    prod: prod_url
-}
+const EnvironmentBaseUrl = process.env.REACT_APP_API_URL
 
 export const getAuthAxiosClient = () => {
     let token = Cookies.get('jwtToken');
@@ -13,7 +9,7 @@ export const getAuthAxiosClient = () => {
         token = ""
     }
     return axios.create({
-        baseURL:  Environments.local,
+        baseURL:  EnvironmentBaseUrl,
         headers: {
           "Content-type": "application/json",
           "Access-Control-Allow-Origin": "*",

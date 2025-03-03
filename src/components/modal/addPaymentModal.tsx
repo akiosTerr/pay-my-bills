@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 // Styled components
 const Overlay = styled.div`
@@ -56,7 +56,7 @@ const Button = styled.button`
   font-weight: bold;
   cursor: pointer;
   color: white;
-  background-color: ${props => props.color || 'gray'};
+  background-color: ${(props) => props.color || "gray"};
   &:hover {
     opacity: 0.9;
   }
@@ -68,20 +68,26 @@ type ModalProps = {
 };
 
 const ModalComponent: React.FC<ModalProps> = ({ isOpen, onClose }) => {
-  const [date, setDate] = useState<string>('');
-  const [money, setMoney] = useState<string>('');
+  const [date, setDate] = useState<string>("");
+  const [money, setMoney] = useState<string>("");
 
-  // Effect for toggling the body scroll
+  const OnChangeDate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDate(e.target.value);
+  };
+
+  const OnChangeMoney = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMoney(e.target.value);
+  };
+
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'visible';
+      document.body.style.overflow = "visible";
     }
 
-    // Cleanup function to set overflow to visible when the component unmounts
     return () => {
-      document.body.style.overflow = 'visible';
+      document.body.style.overflow = "visible";
     };
   }, [isOpen]);
 
@@ -92,16 +98,20 @@ const ModalComponent: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       <ModalBox>
         <h2>Enter Details</h2>
         <Label>
-          Date:
-          <Input type="date" value={date} onChange={e => setDate(e.target.value)} />
+          Payment Date:
+          <Input type="date" value={date} onChange={OnChangeDate} />
         </Label>
         <Label>
           Amount ($):
-          <Input type="number" value={money} onChange={e => setMoney(e.target.value)} />
+          <Input type="number" value={money} onChange={OnChangeMoney} />
         </Label>
         <ButtonGroup>
-          <Button color="#ff4d4d" onClick={() => onClose()}>Cancel</Button>
-          <Button color="#4CAF50" onClick={() => console.log({ date, money })}>Confirm</Button>
+          <Button color="#ff4d4d" onClick={() => onClose()}>
+            Cancel
+          </Button>
+          <Button color="#4CAF50" onClick={() => console.log({ date, money })}>
+            Confirm
+          </Button>
         </ButtonGroup>
       </ModalBox>
     </Overlay>

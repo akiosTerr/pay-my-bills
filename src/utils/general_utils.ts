@@ -1,3 +1,9 @@
+export interface CryptoPrice {
+    name: string
+    current_price_usd: number
+    current_price_brl: number
+}
+
 export const orderedMonths = [
     'January',
     'February',
@@ -82,3 +88,15 @@ export const getDayLabel = (daysDifference: number) => {
         return "Today is the day!";
     }
 };
+
+export const getPriceUsd = (name: string, currentPrice: CryptoPrice[]): number => {
+    const price = currentPrice.find(item => item.name === name)
+    if (price) return price.current_price_usd
+    else return 0
+}
+
+export const getPriceBrl = (name: string, currentPrice: CryptoPrice[]): number => {
+    const price = currentPrice.find(item => item.name === name)
+    if (price) return price.current_price_brl
+    else return 0
+}

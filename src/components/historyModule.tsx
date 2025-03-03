@@ -35,8 +35,6 @@ function History({ historyItemArrayProp }: HistoryArrayPropType) {
   };
 
   const setMonthValues = () => {
-    console.log("set month values");
-
     const monthValues = historyItemArrayProp.map((item) => {
       const expirationDate = new Date(convertDate(item.expirationDate));
       const monthValue = expirationDate.getMonth();

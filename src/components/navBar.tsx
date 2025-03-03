@@ -1,6 +1,6 @@
 import { SetProfileNameCtx, useAuthCtx } from "Contexts";
 import { useContext, useEffect, useState } from "react";
-import { FaChartLine, FaPlus, FaHome } from "react-icons/fa"
+import { FaChartLine, FaPlus, FaHome, FaRegChartBar  } from "react-icons/fa"
 import { Link } from "react-router-dom";
 import "style/navbar.scss"
 
@@ -53,6 +53,9 @@ function NavBar() {
                 </Link> */}
                 <Link className="nav-bar-item" to='/'>
                     <FaHome></FaHome>
+                </Link>
+                <Link className="nav-bar-item" to='crypto'>
+                    <FaRegChartBar></FaRegChartBar>
                 </Link>
                 <Link className="nav-bar-item" to='add'>
                     <FaPlus></FaPlus>
