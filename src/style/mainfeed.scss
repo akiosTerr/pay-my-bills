@@ -9,6 +9,17 @@ $safe: #093eec;
 $warning: #ff7300;
 $danger: #ec0606;
 
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $breakpoint-mobile) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (max-width: $breakpoint-tablet) { @content; }
+  }
+}
+
 .App {
   text-align: center;
   margin: 0px 26px;
@@ -77,6 +88,16 @@ input[type="number"]::-webkit-outer-spin-button {
         overflow-x: scroll;
         padding-bottom: .5em;
         margin-bottom: .5em;
+        @include respond-to(tablet) {
+          display: grid;
+          grid-template-columns: 50% 50%;
+          grid-row-gap: 2rem;
+          overflow-x: hidden;
+        }
+        @include respond-to(mobile) {
+          display: grid;
+          grid-template-columns: 100%;
+        }
         .paid::before {
           content: "";
           background-color: $paid;
@@ -114,6 +135,9 @@ input[type="number"]::-webkit-outer-spin-button {
           margin: 0px 15px;
           flex: 0 0 20%;
           max-width: 241px;
+          @include respond-to(tablet) {
+            max-width: none;
+          }
           .item-header {
             display: flex;
             flex-direction: column;

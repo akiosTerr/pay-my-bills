@@ -89,6 +89,11 @@ const CryptoTable: React.FC = () => {
         </thead>
         <tbody>
           <AddCryptoForm addNewCrypto={addNewCrypto} />
+          <tr>
+            <td colSpan={7}>
+              <hr />
+            </td>
+          </tr>
           {cryptoData.map((crypto) => (
             <tr key={crypto.urlname}>
               <td>{crypto.name}</td>
