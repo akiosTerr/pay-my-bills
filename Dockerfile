@@ -8,12 +8,6 @@ RUN npm install --frozen-lockfile
 
 COPY . .
 
-ARG REACT_APP_ENV=local
-ENV REACT_APP_ENV=${REACT_APP_ENV}
-
-# Copy the correct env file
-RUN cp .env.${REACT_APP_ENV} .env
-
 RUN npm run build
 
 FROM nginx:alpine

@@ -1,6 +1,5 @@
-// src/services/cryptoService.ts
 import axios from 'axios';
-import { CryptoCurrency, CryptoCurrentPrice } from 'components/interfaces/interfaces';
+import { CryptoCurrency } from 'components/interfaces/interfaces';
 import { getAuthAxiosClient } from './axiosInterface';
 
 const API_URL = 'https://api.coingecko.com/api/v3/simple/price';
