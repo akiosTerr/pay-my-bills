@@ -5,4 +5,3 @@ docker-compose*
 .dockerignore
 .git
 .gitignore
-.env.local

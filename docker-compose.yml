@@ -1,8 +1,8 @@
 services:
-  frontend:
+  pmb-front:
     build: .
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=local
     ports:
       - "8080:80"
     restart: always
