@@ -5,7 +5,15 @@ import { getAuthAxiosClient } from './axiosInterface';
 const API_URL = 'https://api.coingecko.com/api/v3/simple/price';
 
 interface GetCryptoIdResponse {
-  data: NewCryptoInput[]
+  data: CryptoStructure[]
+}
+
+export interface CryptoStructure {
+  _id: string;
+  urlname: string;
+  name: string;
+  symbol: string;
+  amount: number;
 }
 
 interface GetCryptoCurrentPriceResponse {
@@ -13,7 +21,6 @@ interface GetCryptoCurrentPriceResponse {
 }
 
 export interface NewCryptoInput {
-  id?: string;
   urlname: string;
   name: string;
   symbol: string;
@@ -87,4 +94,41 @@ export const addCryptoCurrency = async (newCrypto: NewCryptoInput): Promise<NewC
     throw error;
   }
 
+}
+
+export const EditCrypto = (id: string, payload: NewCryptoInput, callBack?: Function) => {
+  if(!id) {
+    return null 
+  }
+  const axiosClient_wx = getAuthAxiosClient()
+  axiosClient_wx.patch('/crypto/'+id, payload)
+  .then((response) => {
+    if(callBack){
+      callBack(response)
+    } 
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+
+}
+
+export const RemoveCrypto = (id: string, callBack?: Function) => {
+  console.log('remove crypto');
+  
+  if(!id) {
+    return null
+  }
+  const axiosClient_wx = getAuthAxiosClient()
+  axiosClient_wx.delete('/crypto/'+id)
+  .then((response) => {
+    console.log(response);
+    
+    if(callBack){
+      callBack(response)
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 }

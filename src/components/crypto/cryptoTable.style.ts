@@ -18,7 +18,6 @@ export const CryptoTableElement = styled.table`
 export const Totalnetworth = styled.h2`
   text-align: center;
   margin: 10px 0;
-  border: 1px #11df11 solid;
   padding: 10px;
   color: #11df11;
   font-size: 2rem;

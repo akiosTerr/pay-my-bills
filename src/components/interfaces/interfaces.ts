@@ -39,7 +39,7 @@ export enum BillStatus {
 }
 
 export interface CryptoCurrency {
-    id?: string
+    _id: string
     urlname: string;
     name: string;
     symbol: string;
