@@ -42,13 +42,12 @@ function EditCrytoModal({ payload, cancel, open = false }: EditModalProps) {
 
     const handleConfirm = () => {
         const {_id, ...cryptoBody } = cryptoTemplate
-        console.log(cryptoBody);
         EditCrypto(_id, cryptoBody);
         handleClose();
     };
 
     return (
-        <div style={{ padding: '40px' }}>
+        <div>
             {isModalOpen && (
                 <Modal
                     title="Edit amount"

@@ -73,7 +73,7 @@ const ModalBody = styled.div`
 
 const ButtonGroup = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 12px;
 `;
 
@@ -86,12 +86,12 @@ const Button = styled.button`
 `;
 
 const ConfirmButton = styled(Button)`
-  background-color: #007bff;
+  background-color: #00ad0e;
   color: white;
 `;
 
 const CancelButton = styled(Button)`
-  background-color: #6c757d;
+  background-color: #ff0000;
   color: white;
 `;
 

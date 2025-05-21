@@ -38,7 +38,7 @@ function DeleteCryptoModal({amount, label, cancel, id, open = false}: DeleteModa
     };
 
     return (
-        <div style={{ padding: '40px' }}>
+        <div>
             {isModalOpen && (
                 <Modal
                     title="Delete Item"

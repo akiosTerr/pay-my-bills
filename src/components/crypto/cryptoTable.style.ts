@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const CryptoTableElement = styled.table`
   margin: 2rem auto;
+  background-color: #00000069;
   font-size: 1.5em;
   color: white;
   border: 1px solid white;

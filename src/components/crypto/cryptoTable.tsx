@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { CryptoStructure, fetchCryptocurrencies, NewCryptoInput, RemoveCrypto } from "api_actions/cryptoService";
 import { CryptoCurrency } from "../interfaces/interfaces";
 import { CryptoPrice, getPriceBrl, getPriceUsd } from "utils/general_utils";
-import { CreateCryptoBtn, CryptoTableElement, Totalnetworth } from "./cryptoTable.style";
+import { CryptoTableElement, Totalnetworth } from "./cryptoTable.style";
 import { styled } from "styled-components";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import DeleteCryptoModal from "components/modal/DeleteCryptoModal";
 import EditCrytoModal from "components/modal/EditCryptoModal";
+import CreateCryptoModal from "components/modal/CreateCryptoModal";
 
 
 
@@ -77,6 +78,7 @@ const CryptoTable: React.FC = () => {
   const [totalBrl, setTotalBrl] = useState<number>(0);
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false)
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false)
+  const [createModalOpen, setCreateModalOpen] = useState<boolean>(false)
   const [cryptoIdToDelete, setCryptoIdToDelete] = useState<string>('')
   const [cryptoToEdit, setCryptoToEdit] = useState<CryptoStructure>({
     _id: '0',
@@ -158,8 +160,6 @@ const CryptoTable: React.FC = () => {
   }
 
   const callDeleteModal = (id: string) => {
-    console.log(id);
-
     if (id) {
       setCryptoIdToDelete(id)
       setDeleteModalOpen(true)
@@ -169,11 +169,17 @@ const CryptoTable: React.FC = () => {
   const callEditModal = (id: string) => {
     if (id) {
       const body = buildCryptoPayload(id)
-      console.log(id);
-      console.log(body);
       setCryptoToEdit(body)
       setEditModalOpen(true)
     }
+  }
+
+  const callCreateModal = () => {
+    setCreateModalOpen(true)
+  }
+
+  const closeCreateModal = () => {
+    setCreateModalOpen(false)
   }
 
   const closeDeleteModal = () => {
@@ -189,6 +195,7 @@ const CryptoTable: React.FC = () => {
     <>
       <DeleteCryptoModal id={cryptoIdToDelete} amount={getCryptoById(cryptoIdToDelete)?.amount} label={getCryptoById(cryptoIdToDelete)?.name} cancel={closeDeleteModal} open={deleteModalOpen} />
       <EditCrytoModal payload={cryptoToEdit} cancel={closeEditModal} open={editModalOpen} />
+      <CreateCryptoModal cancel={closeCreateModal} open={createModalOpen} />
       <CryptoTableElement>
         <thead>
           <tr>
@@ -233,7 +240,7 @@ const CryptoTable: React.FC = () => {
           <tr>
             <td colSpan={7}>
               <AddCryptoWrapper>
-                <AddCryptoBtn>Create Coin</AddCryptoBtn>
+                <AddCryptoBtn onClick={() => callCreateModal()}>Create Coin</AddCryptoBtn>
               </AddCryptoWrapper>
             </td>
           </tr>
